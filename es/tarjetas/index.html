@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Tarjetas de Estudio | Helping Teachers</title>
 
-  <meta
-    name="description"
-    content="Crea tarjetas educativas para vocabulario, palabras frecuentes, matemáticas, ciencias, inglés y español."
-  />
+  <meta name="description"
+    content="Crea tarjetas educativas para vocabulario, palabras frecuentes, matemáticas, ciencias, inglés y español." />
 
   <meta name="theme-color" content="#2563EB" />
 
-  <link
-    rel="canonical"
-    href="https://helpingteachers.io/es/tarjetas/"
-  />
+  <link rel="canonical" href="https://helpingteachers.io/es/tarjetas/" />
 
   <link rel="icon" href="../../assets/favicon/favicon.ico" />
   <link rel="apple-touch-icon" href="../../assets/favicon/favicon.png" />
 
   <link rel="stylesheet" href="../../css/styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NGG1JCMT2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-NGG1JCMT2V');
+  </script>
 </head>
 
 <body>
@@ -29,21 +34,11 @@
   <header class="site-header">
     <nav class="navbar container">
 
-      <a
-        class="logo"
-        href="../index.html"
-        aria-label="Helping Teachers"
-      >
-        <img
-          src="../../assets/logo/helping-teachers-logo-horizontal.png"
-          alt="Helping Teachers"
-        />
+      <a class="logo" href="../index.html" aria-label="Helping Teachers">
+        <img src="../../assets/logo/helping-teachers-logo-horizontal.png" alt="Helping Teachers" />
       </a>
 
-      <a
-        class="language-switch"
-        href="../../flashcards/"
-      >
+      <a class="language-switch" href="../../flashcards/">
         English
       </a>
 
@@ -54,21 +49,13 @@
 
     <section class="tool-hero container">
 
-      <a
-        class="back-link"
-        href="../index.html"
-      >
+      <a class="back-link" href="../index.html">
         ← Volver al Panel
       </a>
 
       <div class="tool-heading">
 
-        <img
-          src="../../assets/icons/flashcards.png"
-          alt=""
-          class="tool-heading-icon"
-          aria-hidden="true"
-        />
+        <img src="../../assets/icons/flashcards.png" alt="" class="tool-heading-icon" aria-hidden="true" />
 
         <div>
 
@@ -88,16 +75,9 @@
 
     <section class="timer-section container">
 
-      <div
-        class="timer-card flashcards-card"
-        data-empty-message="Agrega al menos una tarjeta completa."
-      >
+      <div class="timer-card flashcards-card" data-empty-message="Agrega al menos una tarjeta completa.">
 
-        <button
-          type="button"
-          class="flashcards-exit-fullscreen"
-          id="exitFullscreenFlashcardsBtn"
-        >
+        <button type="button" class="flashcards-exit-fullscreen" id="exitFullscreenFlashcardsBtn">
           Salir de Pantalla Completa
         </button>
 
@@ -122,10 +102,7 @@
 
             </div>
 
-            <div
-              class="flashcards-table"
-              aria-label="Constructor de tarjetas"
-            >
+            <div class="flashcards-table" aria-label="Constructor de tarjetas">
 
               <div class="flashcards-table-header">
                 <span>Frente</span>
@@ -133,34 +110,17 @@
                 <span></span>
               </div>
 
-              <div
-                id="flashcardsRows"
-                class="flashcards-rows"
-              >
+              <div id="flashcardsRows" class="flashcards-rows">
 
                 <div class="flashcards-row">
 
-                  <input
-                    type="text"
-                    class="flashcard-front-input"
-                    aria-label="Frente de la tarjeta 1"
-                    value="Dog"
-                    placeholder="Frente"
-                  />
+                  <input type="text" class="flashcard-front-input" aria-label="Frente de la tarjeta 1" value="Dog"
+                    placeholder="Frente" />
 
-                  <input
-                    type="text"
-                    class="flashcard-back-input"
-                    aria-label="Reverso de la tarjeta 1"
-                    value="Perro"
-                    placeholder="Reverso"
-                  />
+                  <input type="text" class="flashcard-back-input" aria-label="Reverso de la tarjeta 1" value="Perro"
+                    placeholder="Reverso" />
 
-                  <button
-                    type="button"
-                    class="flashcard-remove-btn"
-                    aria-label="Eliminar tarjeta"
-                  >
+                  <button type="button" class="flashcard-remove-btn" aria-label="Eliminar tarjeta">
                     ×
                   </button>
 
@@ -168,27 +128,13 @@
 
                 <div class="flashcards-row">
 
-                  <input
-                    type="text"
-                    class="flashcard-front-input"
-                    aria-label="Frente de la tarjeta 2"
-                    value="Cat"
-                    placeholder="Frente"
-                  />
+                  <input type="text" class="flashcard-front-input" aria-label="Frente de la tarjeta 2" value="Cat"
+                    placeholder="Frente" />
 
-                  <input
-                    type="text"
-                    class="flashcard-back-input"
-                    aria-label="Reverso de la tarjeta 2"
-                    value="Gato"
-                    placeholder="Reverso"
-                  />
+                  <input type="text" class="flashcard-back-input" aria-label="Reverso de la tarjeta 2" value="Gato"
+                    placeholder="Reverso" />
 
-                  <button
-                    type="button"
-                    class="flashcard-remove-btn"
-                    aria-label="Eliminar tarjeta"
-                  >
+                  <button type="button" class="flashcard-remove-btn" aria-label="Eliminar tarjeta">
                     ×
                   </button>
 
@@ -196,27 +142,13 @@
 
                 <div class="flashcards-row">
 
-                  <input
-                    type="text"
-                    class="flashcard-front-input"
-                    aria-label="Frente de la tarjeta 3"
-                    value="House"
-                    placeholder="Frente"
-                  />
+                  <input type="text" class="flashcard-front-input" aria-label="Frente de la tarjeta 3" value="House"
+                    placeholder="Frente" />
 
-                  <input
-                    type="text"
-                    class="flashcard-back-input"
-                    aria-label="Reverso de la tarjeta 3"
-                    value="Casa"
-                    placeholder="Reverso"
-                  />
+                  <input type="text" class="flashcard-back-input" aria-label="Reverso de la tarjeta 3" value="Casa"
+                    placeholder="Reverso" />
 
-                  <button
-                    type="button"
-                    class="flashcard-remove-btn"
-                    aria-label="Eliminar tarjeta"
-                  >
+                  <button type="button" class="flashcard-remove-btn" aria-label="Eliminar tarjeta">
                     ×
                   </button>
 
@@ -228,27 +160,15 @@
 
             <div class="flashcards-actions">
 
-              <button
-                type="button"
-                class="btn btn-secondary"
-                id="addFlashcardRowBtn"
-              >
+              <button type="button" class="btn btn-secondary" id="addFlashcardRowBtn">
                 Agregar Tarjeta
               </button>
 
-              <button
-                type="button"
-                class="btn btn-primary"
-                id="generateFlashcardsBtn"
-              >
+              <button type="button" class="btn btn-primary" id="generateFlashcardsBtn">
                 Generar Tarjetas
               </button>
 
-              <button
-                type="button"
-                class="btn btn-secondary"
-                id="clearFlashcardsBtn"
-              >
+              <button type="button" class="btn btn-secondary" id="clearFlashcardsBtn">
                 Limpiar
               </button>
 
@@ -301,24 +221,13 @@
 
           <div class="flashcards-study-panel">
 
-            <div
-              class="flashcards-mode-tabs"
-              aria-label="Modo de tarjetas"
-            >
+            <div class="flashcards-mode-tabs" aria-label="Modo de tarjetas">
 
-              <button
-                type="button"
-                class="flashcards-mode-btn active"
-                data-mode="presentation"
-              >
+              <button type="button" class="flashcards-mode-btn active" data-mode="presentation">
                 Presentación
               </button>
 
-              <button
-                type="button"
-                class="flashcards-mode-btn"
-                data-mode="student"
-              >
+              <button type="button" class="flashcards-mode-btn" data-mode="student">
                 Estudiante
               </button>
 
@@ -336,32 +245,18 @@
 
             </div>
 
-            <button
-              type="button"
-              id="flashcardDisplay"
-              class="flashcard-display"
-              aria-live="polite"
-              aria-label="Voltear tarjeta"
-            >
+            <button type="button" id="flashcardDisplay" class="flashcard-display" aria-live="polite"
+              aria-label="Voltear tarjeta">
 
-              <span
-                class="flashcard-side-label"
-                id="flashcardSideLabel"
-              >
+              <span class="flashcard-side-label" id="flashcardSideLabel">
                 Frente
               </span>
 
-              <span
-                class="flashcard-text"
-                id="flashcardText"
-              >
+              <span class="flashcard-text" id="flashcardText">
                 Dog
               </span>
 
-              <span
-                class="flashcard-hint"
-                id="flashcardHint"
-              >
+              <span class="flashcard-hint" id="flashcardHint">
                 Haz clic para voltear
               </span>
 
@@ -369,43 +264,23 @@
 
             <div class="flashcards-controls">
 
-              <button
-                type="button"
-                class="btn btn-secondary"
-                id="previousFlashcardBtn"
-              >
+              <button type="button" class="btn btn-secondary" id="previousFlashcardBtn">
                 Anterior
               </button>
 
-              <button
-                type="button"
-                class="btn btn-primary"
-                id="flipFlashcardBtn"
-              >
+              <button type="button" class="btn btn-primary" id="flipFlashcardBtn">
                 Voltear
               </button>
 
-              <button
-                type="button"
-                class="btn btn-secondary"
-                id="nextFlashcardBtn"
-              >
+              <button type="button" class="btn btn-secondary" id="nextFlashcardBtn">
                 Siguiente
               </button>
 
-              <button
-                type="button"
-                class="btn btn-light"
-                id="shuffleFlashcardsBtn"
-              >
+              <button type="button" class="btn btn-light" id="shuffleFlashcardsBtn">
                 Mezclar
               </button>
 
-              <button
-                type="button"
-                class="btn btn-light"
-                id="fullscreenFlashcardsBtn"
-              >
+              <button type="button" class="btn btn-light" id="fullscreenFlashcardsBtn">
                 Pantalla Completa
               </button>
 
@@ -420,11 +295,7 @@
 
         </div>
 
-        <div
-          id="flashcardsPreviewList"
-          class="flashcards-preview-list"
-          aria-label="Vista previa de tarjetas"
-        ></div>
+        <div id="flashcardsPreviewList" class="flashcards-preview-list" aria-label="Vista previa de tarjetas"></div>
 
         <p class="timer-note">
           Consejo: utiliza esta herramienta para vocabulario,
@@ -448,4 +319,5 @@
   <script src="../../js/flashcards.js"></script>
 
 </body>
+
 </html>

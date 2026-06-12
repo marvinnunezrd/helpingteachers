@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Medidor de Ruido | Helping Teachers</title>
 
-  <meta
-    name="description"
-    content="Monitorea el nivel de ruido del aula en tiempo real con un medidor visual diseñado para maestros."
-  />
+  <meta name="description"
+    content="Monitorea el nivel de ruido del aula en tiempo real con un medidor visual diseñado para maestros." />
 
   <link rel="canonical" href="https://helpingteachers.io/es/medidor-de-ruido/" />
   <link rel="icon" href="../../assets/favicon/favicon.ico" />
   <link rel="stylesheet" href="../../css/styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NGG1JCMT2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-NGG1JCMT2V');
+  </script>
 </head>
 
 <body>
   <header class="site-header">
     <nav class="navbar container">
       <a class="logo" href="../index.html" aria-label="Helping Teachers">
-        <img
-          src="../../assets/logo/helping-teachers-logo-horizontal.png"
-          alt="Helping Teachers"
-        />
+        <img src="../../assets/logo/helping-teachers-logo-horizontal.png" alt="Helping Teachers" />
       </a>
 
       <a class="language-switch" href="../../noise-meter/">
@@ -39,12 +44,7 @@
       </a>
 
       <div class="tool-heading">
-        <img
-          src="../../assets/icons/noise-meter.png"
-          alt=""
-          class="tool-heading-icon"
-          aria-hidden="true"
-        />
+        <img src="../../assets/icons/noise-meter.png" alt="" class="tool-heading-icon" aria-hidden="true" />
 
         <div>
           <h1>Medidor de Ruido</h1>
@@ -58,62 +58,37 @@
     </section>
 
     <section class="timer-section container">
-      <div
-        class="timer-card noise-meter-card"
-        data-start-message="Iniciar Monitoreo"
-        data-stop-message="Detener Monitoreo"
-        data-ready-message="Esperando acceso al micrófono..."
-        data-quiet-message="Silencioso"
-        data-medium-message="Subiendo el volumen"
-        data-loud-message="Demasiado ruido"
-        data-mic-error-message="Se necesita acceso al micrófono."
-      >
+      <div class="timer-card noise-meter-card" data-start-message="Iniciar Monitoreo"
+        data-stop-message="Detener Monitoreo" data-ready-message="Esperando acceso al micrófono..."
+        data-quiet-message="Silencioso" data-medium-message="Subiendo el volumen" data-loud-message="Demasiado ruido"
+        data-mic-error-message="Se necesita acceso al micrófono.">
         <div class="noise-display">
-          <div
-            id="noiseEmoji"
-            class="noise-emoji"
-          >
+          <div id="noiseEmoji" class="noise-emoji">
             🎤
           </div>
 
-          <div
-            id="noiseStatus"
-            class="noise-status"
-          >
+          <div id="noiseStatus" class="noise-status">
             Esperando acceso al micrófono...
           </div>
 
-          <div
-            id="noiseValue"
-            class="noise-value"
-          >
+          <div id="noiseValue" class="noise-value">
             0%
           </div>
         </div>
 
         <div class="noise-meter-bar-container">
-          <div
-            id="noiseMeterBar"
-            class="noise-meter-bar"
-          ></div>
+          <div id="noiseMeterBar" class="noise-meter-bar"></div>
         </div>
 
         <div class="timer-actions">
-          <button
-            type="button"
-            class="btn btn-primary"
-            id="toggleNoiseBtn"
-          >
+          <button type="button" class="btn btn-primary" id="toggleNoiseBtn">
             Iniciar Monitoreo
           </button>
         </div>
 
         <div class="noise-alert-toggle">
           <label for="noiseAlertToggle">
-            <input
-              type="checkbox"
-              id="noiseAlertToggle"
-            />
+            <input type="checkbox" id="noiseAlertToggle" />
             Alerta suave cuando haya demasiado ruido
           </label>
         </div>
@@ -151,4 +126,5 @@
   <script src="../../js/main.js"></script>
   <script src="../../js/noise-meter.js"></script>
 </body>
+
 </html>

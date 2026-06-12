@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Classroom Stopwatch | Helping Teachers</title>
 
-  <meta
-    name="description"
-    content="A simple classroom stopwatch for teachers. Start, pause, reset, and track time during classroom games, routines, and activities."
-  />
+  <meta name="description"
+    content="A simple classroom stopwatch for teachers. Start, pause, reset, and track time during classroom games, routines, and activities." />
 
   <link rel="stylesheet" href="../css/styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NGG1JCMT2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-NGG1JCMT2V');
+  </script>
 </head>
 
 <body>
   <header class="site-header">
     <nav class="navbar container">
       <a class="logo" href="../index.html">
-        <img
-          src="../assets/logo/helping-teachers-logo-horizontal.png"
-          alt="Helping Teachers"
-        />
+        <img src="../assets/logo/helping-teachers-logo-horizontal.png" alt="Helping Teachers" />
       </a>
 
       <a class="language-switch" href="../es/cronometro/">Español</a>
@@ -33,11 +38,7 @@
       <a class="back-link" href="../index.html">← Back to Dashboard</a>
 
       <div class="tool-heading">
-        <img
-          src="../assets/icons/stopwatch.png"
-          alt=""
-          class="tool-heading-icon"
-        />
+        <img src="../assets/icons/stopwatch.png" alt="" class="tool-heading-icon" />
 
         <div>
           <h1>Classroom Stopwatch</h1>
@@ -79,4 +80,5 @@
   <script src="../js/main.js"></script>
   <script src="../js/stopwatch.js"></script>
 </body>
+
 </html>

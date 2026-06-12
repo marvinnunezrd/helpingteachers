@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Brain Breaks | Helping Teachers</title>
 
-  <meta
-    name="description"
-    content="Generate quick classroom brain breaks for movement, mindfulness, stretching, and fun classroom reset activities."
-  />
+  <meta name="description"
+    content="Generate quick classroom brain breaks for movement, mindfulness, stretching, and fun classroom reset activities." />
   <meta name="theme-color" content="#2563EB" />
 
   <link rel="canonical" href="https://helpingteachers.io/brain-breaks/" />
   <link rel="icon" href="../assets/favicon/favicon.ico" />
   <link rel="apple-touch-icon" href="../assets/favicon/favicon.png" />
   <link rel="stylesheet" href="../css/styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NGG1JCMT2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-NGG1JCMT2V');
+  </script>
 </head>
 
 <body>
   <header class="site-header">
     <nav class="navbar container">
       <a class="logo" href="../index.html" aria-label="Helping Teachers">
-        <img
-          src="../assets/logo/helping-teachers-logo-horizontal.png"
-          alt="Helping Teachers"
-        />
+        <img src="../assets/logo/helping-teachers-logo-horizontal.png" alt="Helping Teachers" />
       </a>
 
       <a class="language-switch" href="../es/pausas-activas/">
@@ -41,12 +46,7 @@
       </a>
 
       <div class="tool-heading">
-        <img
-          src="../assets/icons/brain-breaks.png"
-          alt=""
-          class="tool-heading-icon"
-          aria-hidden="true"
-        />
+        <img src="../assets/icons/brain-breaks.png" alt="" class="tool-heading-icon" aria-hidden="true" />
 
         <div>
           <h1>Brain Breaks</h1>
@@ -60,15 +60,8 @@
     </section>
 
     <section class="timer-section container">
-      <div
-        class="timer-card brain-breaks-card"
-        data-empty-message="Choose a category and generate a brain break."
-      >
-        <button
-          type="button"
-          class="brain-breaks-exit-fullscreen"
-          id="exitBrainBreaksFullscreenBtn"
-        >
+      <div class="timer-card brain-breaks-card" data-empty-message="Choose a category and generate a brain break.">
+        <button type="button" class="brain-breaks-exit-fullscreen" id="exitBrainBreaksFullscreenBtn">
           Exit Fullscreen
         </button>
 
@@ -81,69 +74,37 @@
             </p>
 
             <div class="brain-breaks-categories" aria-label="Brain break categories">
-              <button
-                type="button"
-                class="brain-break-category-btn active"
-                data-category="all"
-              >
+              <button type="button" class="brain-break-category-btn active" data-category="all">
                 All
               </button>
 
-              <button
-                type="button"
-                class="brain-break-category-btn"
-                data-category="movement"
-              >
+              <button type="button" class="brain-break-category-btn" data-category="movement">
                 Movement
               </button>
 
-              <button
-                type="button"
-                class="brain-break-category-btn"
-                data-category="mindfulness"
-              >
+              <button type="button" class="brain-break-category-btn" data-category="mindfulness">
                 Mindfulness
               </button>
 
-              <button
-                type="button"
-                class="brain-break-category-btn"
-                data-category="stretching"
-              >
+              <button type="button" class="brain-break-category-btn" data-category="stretching">
                 Stretching
               </button>
 
-              <button
-                type="button"
-                class="brain-break-category-btn"
-                data-category="classroom-fun"
-              >
+              <button type="button" class="brain-break-category-btn" data-category="classroom-fun">
                 Classroom Fun
               </button>
             </div>
 
             <div class="brain-breaks-actions">
-              <button
-                type="button"
-                class="btn btn-primary"
-                id="newBrainBreakBtn"
-              >
+              <button type="button" class="btn btn-primary" id="newBrainBreakBtn">
                 New Brain Break
               </button>
 
-              <button
-                type="button"
-                class="btn btn-secondary"
-                id="saveBrainBreakBtn"
-              >
+              <button type="button" class="btn btn-secondary" id="saveBrainBreakBtn">
                 ❤️ Save Favorite
               </button>
 
-              <button
-                type="button"
-                class="btn btn-light"
-                id="brainBreaksFullscreenBtn"
-              >
+              <button type="button" class="btn btn-light" id="brainBreaksFullscreenBtn">
                 Fullscreen
               </button>
             </div>
@@ -160,11 +121,7 @@
               <span id="brainBreakCounter">Brain Break</span>
             </div>
 
-            <div
-              class="brain-break-display"
-              id="brainBreakDisplay"
-              aria-live="polite"
-            >
+            <div class="brain-break-display" id="brainBreakDisplay" aria-live="polite">
               <span class="brain-break-emoji" id="brainBreakEmoji">
                 🦘
               </span>
@@ -179,19 +136,11 @@
             </div>
 
             <div class="brain-breaks-controls">
-              <button
-                type="button"
-                class="btn btn-primary"
-                id="anotherBrainBreakBtn"
-              >
+              <button type="button" class="btn btn-primary" id="anotherBrainBreakBtn">
                 Another One
               </button>
 
-              <button
-                type="button"
-                class="btn btn-secondary"
-                id="saveBrainBreakBtnBottom"
-              >
+              <button type="button" class="btn btn-secondary" id="saveBrainBreakBtnBottom">
                 ❤️ Save Favorite
               </button>
             </div>
@@ -202,20 +151,12 @@
           <div class="brain-breaks-favorites-header">
             <h2>Favorite Brain Breaks</h2>
 
-            <button
-              type="button"
-              class="btn btn-light"
-              id="clearBrainBreakFavoritesBtn"
-            >
+            <button type="button" class="btn btn-light" id="clearBrainBreakFavoritesBtn">
               Clear Favorites
             </button>
           </div>
 
-          <div
-            id="brainBreakFavoritesList"
-            class="brain-breaks-favorites-list"
-            aria-label="Favorite brain breaks"
-          >
+          <div id="brainBreakFavoritesList" class="brain-breaks-favorites-list" aria-label="Favorite brain breaks">
           </div>
         </div>
 
@@ -237,4 +178,5 @@
   <script src="../js/main.js"></script>
   <script src="../js/brain-breaks.js"></script>
 </body>
+
 </html>

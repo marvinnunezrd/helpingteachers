@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Ruleta de Premios | Helping Teachers</title>
 
-  <meta
-    name="description"
-    content="Gira una divertida ruleta de premios para recompensas en el aula, incentivos para estudiantes, motivación positiva, juegos y actividades educativas."
-  />
+  <meta name="description"
+    content="Gira una divertida ruleta de premios para recompensas en el aula, incentivos para estudiantes, motivación positiva, juegos y actividades educativas." />
 
   <link rel="canonical" href="https://helpingteachers.io/es/ruleta-de-premios/" />
   <link rel="icon" href="../../assets/favicon/favicon.ico" />
   <link rel="stylesheet" href="../../css/styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NGG1JCMT2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-NGG1JCMT2V');
+  </script>
 </head>
 
 <body>
   <header class="site-header">
     <nav class="navbar container">
       <a class="logo" href="../index.html" aria-label="Helping Teachers">
-        <img
-          src="../../assets/logo/helping-teachers-logo-horizontal.png"
-          alt="Helping Teachers"
-        />
+        <img src="../../assets/logo/helping-teachers-logo-horizontal.png" alt="Helping Teachers" />
       </a>
 
       <a class="language-switch" href="../../reward-wheel/">
@@ -39,12 +44,7 @@
       </a>
 
       <div class="tool-heading">
-        <img
-          src="../../assets/icons/reward-wheel.png"
-          alt=""
-          class="tool-heading-icon"
-          aria-hidden="true"
-        />
+        <img src="../../assets/icons/reward-wheel.png" alt="" class="tool-heading-icon" aria-hidden="true" />
 
         <div>
           <h1>Ruleta de Premios</h1>
@@ -58,24 +58,14 @@
     </section>
 
     <section class="timer-section container">
-      <div
-        class="timer-card reward-wheel-card"
-        data-ready-message="Lista para girar..."
-        data-spinning-message="Girando..."
-        data-empty-options="Agrega al menos dos premios."
-        data-result-label="Ganador"
-        data-history-label="Historial"
-        data-empty-history="Aún no se han seleccionado premios."
-      >
+      <div class="timer-card reward-wheel-card" data-ready-message="Lista para girar..."
+        data-spinning-message="Girando..." data-empty-options="Agrega al menos dos premios." data-result-label="Ganador"
+        data-history-label="Historial" data-empty-history="Aún no se han seleccionado premios.">
         <div class="reward-wheel-layout">
           <div class="reward-wheel-area">
             <div class="wheel-pointer" aria-hidden="true"></div>
 
-            <div
-              class="reward-wheel"
-              id="rewardWheel"
-              aria-hidden="true"
-            >
+            <div class="reward-wheel" id="rewardWheel" aria-hidden="true">
               <div class="wheel-center">HT</div>
             </div>
           </div>
@@ -85,11 +75,7 @@
               Premios
             </label>
 
-            <textarea
-              id="rewardOptions"
-              rows="8"
-              spellcheck="true"
-            >Recreo extra
+            <textarea id="rewardOptions" rows="8" spellcheck="true">Recreo extra
 Líder de fila
 Elegir una canción
 Pase de tarea
@@ -105,19 +91,11 @@ Tiempo para dibujar</textarea>
         </div>
 
         <div class="timer-actions">
-          <button
-            type="button"
-            class="btn btn-primary"
-            id="spinRewardBtn"
-          >
+          <button type="button" class="btn btn-primary" id="spinRewardBtn">
             Girar
           </button>
 
-          <button
-            type="button"
-            class="btn btn-secondary"
-            id="resetRewardBtn"
-          >
+          <button type="button" class="btn btn-secondary" id="resetRewardBtn">
             Reiniciar
           </button>
         </div>
@@ -125,11 +103,7 @@ Tiempo para dibujar</textarea>
         <div class="result-box reward-result-box">
           <h2>Ganador</h2>
 
-          <div
-            id="rewardResult"
-            class="reward-result"
-            aria-live="polite"
-          >
+          <div id="rewardResult" class="reward-result" aria-live="polite">
             Lista para girar...
           </div>
         </div>
@@ -137,10 +111,7 @@ Tiempo para dibujar</textarea>
         <div class="reward-history-box">
           <h2>Historial</h2>
 
-          <div
-            id="rewardHistory"
-            class="reward-history"
-          >
+          <div id="rewardHistory" class="reward-history">
             Aún no se han seleccionado premios.
           </div>
         </div>
@@ -164,4 +135,5 @@ Tiempo para dibujar</textarea>
   <script src="../../js/main.js"></script>
   <script src="../../js/reward-wheel.js"></script>
 </body>
+
 </html>

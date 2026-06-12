@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Random Number Generator | Helping Teachers</title>
 
-  <meta
-    name="description"
-    content="Generate random numbers instantly for classroom participation, math games, student turns, and quick teacher decisions."
-  />
+  <meta name="description"
+    content="Generate random numbers instantly for classroom participation, math games, student turns, and quick teacher decisions." />
 
   <link rel="canonical" href="https://helpingteachers.io/random-number/" />
   <link rel="icon" href="../assets/favicon/favicon.ico" />
   <link rel="stylesheet" href="../css/styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NGG1JCMT2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-NGG1JCMT2V');
+  </script>
 </head>
 
 <body>
   <header class="site-header">
     <nav class="navbar container">
       <a class="logo" href="../index.html" aria-label="Helping Teachers">
-        <img
-          src="../assets/logo/helping-teachers-logo-horizontal.png"
-          alt="Helping Teachers"
-        />
+        <img src="../assets/logo/helping-teachers-logo-horizontal.png" alt="Helping Teachers" />
       </a>
 
       <a class="language-switch" href="../es/numero-aleatorio/">
@@ -39,12 +44,7 @@
       </a>
 
       <div class="tool-heading">
-        <img
-          src="../assets/icons/random-number.png"
-          alt=""
-          class="tool-heading-icon"
-          aria-hidden="true"
-        />
+        <img src="../assets/icons/random-number.png" alt="" class="tool-heading-icon" aria-hidden="true" />
 
         <div>
           <h1>Random Number Generator</h1>
@@ -58,63 +58,37 @@
     </section>
 
     <section class="timer-section container">
-      <div
-        class="timer-card random-number-card"
-        data-ready-message="Ready to generate..."
-        data-generating-message="Generating..."
-        data-range-label="Range"
-        data-history-label="History"
+      <div class="timer-card random-number-card" data-ready-message="Ready to generate..."
+        data-generating-message="Generating..." data-range-label="Range" data-history-label="History"
         data-empty-history="No numbers generated yet."
         data-error-range="Minimum number cannot be greater than maximum number."
         data-error-empty="Please enter both a minimum and maximum number."
-        data-error-exhausted="All numbers in this range have already been generated. Clear history or turn off repeats."
-      >
+        data-error-exhausted="All numbers in this range have already been generated. Clear history or turn off repeats.">
         <div class="random-inputs">
           <label for="minimumNumber">
             Minimum Number
-            <input
-              type="number"
-              id="minimumNumber"
-              value="1"
-              inputmode="numeric"
-            />
+            <input type="number" id="minimumNumber" value="1" inputmode="numeric" />
           </label>
 
           <label for="maximumNumber">
             Maximum Number
-            <input
-              type="number"
-              id="maximumNumber"
-              value="100"
-              inputmode="numeric"
-            />
+            <input type="number" id="maximumNumber" value="100" inputmode="numeric" />
           </label>
         </div>
 
         <div class="random-repeat-toggle">
           <label for="excludeRepeats">
-            <input
-              type="checkbox"
-              id="excludeRepeats"
-            />
+            <input type="checkbox" id="excludeRepeats" />
             Exclude repeated numbers
           </label>
         </div>
 
         <div class="timer-actions">
-          <button
-            type="button"
-            class="btn btn-primary"
-            id="generateBtn"
-          >
+          <button type="button" class="btn btn-primary" id="generateBtn">
             Generate
           </button>
 
-          <button
-            type="button"
-            class="btn btn-secondary"
-            id="clearRandomBtn"
-          >
+          <button type="button" class="btn btn-secondary" id="clearRandomBtn">
             Clear
           </button>
         </div>
@@ -122,18 +96,11 @@
         <div class="result-box">
           <h2>Result</h2>
 
-          <div
-            id="randomResult"
-            class="random-result"
-            aria-live="polite"
-          >
+          <div id="randomResult" class="random-result" aria-live="polite">
             Ready to generate...
           </div>
 
-          <p
-            id="randomRange"
-            class="random-range"
-          >
+          <p id="randomRange" class="random-range">
             Range: 1–100
           </p>
         </div>
@@ -141,10 +108,7 @@
         <div class="random-history-box">
           <h2>History</h2>
 
-          <div
-            id="randomHistory"
-            class="random-history"
-          >
+          <div id="randomHistory" class="random-history">
             No numbers generated yet.
           </div>
         </div>
@@ -167,4 +131,5 @@
   <script src="../js/main.js"></script>
   <script src="../js/random-number.js"></script>
 </body>
+
 </html>

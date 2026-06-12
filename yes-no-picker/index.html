@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Yes / No Picker | Helping Teachers</title>
 
-  <meta
-    name="description"
-    content="Pick a quick yes or no answer for classroom decisions, student games, participation, and fun teacher activities."
-  />
+  <meta name="description"
+    content="Pick a quick yes or no answer for classroom decisions, student games, participation, and fun teacher activities." />
 
   <link rel="canonical" href="https://helpingteachers.io/yes-no-picker/" />
   <link rel="icon" href="../assets/favicon/favicon.ico" />
   <link rel="stylesheet" href="../css/styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NGG1JCMT2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-NGG1JCMT2V');
+  </script>
 </head>
 
 <body>
   <header class="site-header">
     <nav class="navbar container">
       <a class="logo" href="../index.html" aria-label="Helping Teachers">
-        <img
-          src="../assets/logo/helping-teachers-logo-horizontal.png"
-          alt="Helping Teachers"
-        />
+        <img src="../assets/logo/helping-teachers-logo-horizontal.png" alt="Helping Teachers" />
       </a>
 
       <a class="language-switch" href="../es/selector-si-no/">
@@ -39,12 +44,7 @@
       </a>
 
       <div class="tool-heading">
-        <img
-          src="../assets/icons/yes-no-picker.png"
-          alt=""
-          class="tool-heading-icon"
-          aria-hidden="true"
-        />
+        <img src="../assets/icons/yes-no-picker.png" alt="" class="tool-heading-icon" aria-hidden="true" />
 
         <div>
           <h1>Yes / No Picker</h1>
@@ -58,16 +58,10 @@
     </section>
 
     <section class="timer-section container">
-      <div
-        class="timer-card yes-no-card"
-        data-thinking-message="Thinking..."
-        data-ready-message="Ready to pick..."
-        data-history-label="History"
-        data-empty-history="No answers picked yet."
-        data-simple-yes="YES"
+      <div class="timer-card yes-no-card" data-thinking-message="Thinking..." data-ready-message="Ready to pick..."
+        data-history-label="History" data-empty-history="No answers picked yet." data-simple-yes="YES"
         data-simple-no="NO"
-        data-fun-options="Absolutely!,Go for it!,Definitely!,Sounds good!,Not today.,Maybe next time.,Try again!,Ask again later."
-      >
+        data-fun-options="Absolutely!,Go for it!,Definitely!,Sounds good!,Not today.,Maybe next time.,Try again!,Ask again later.">
         <div class="yes-no-options">
           <label for="pickerMode">
             Mode
@@ -79,19 +73,11 @@
         </div>
 
         <div class="timer-actions">
-          <button
-            type="button"
-            class="btn btn-primary"
-            id="pickAnswerBtn"
-          >
+          <button type="button" class="btn btn-primary" id="pickAnswerBtn">
             Pick an Answer
           </button>
 
-          <button
-            type="button"
-            class="btn btn-secondary"
-            id="clearYesNoBtn"
-          >
+          <button type="button" class="btn btn-secondary" id="clearYesNoBtn">
             Clear
           </button>
         </div>
@@ -99,11 +85,7 @@
         <div class="result-box">
           <h2>Result</h2>
 
-          <div
-            id="yesNoResult"
-            class="yes-no-result"
-            aria-live="polite"
-          >
+          <div id="yesNoResult" class="yes-no-result" aria-live="polite">
             Ready to pick...
           </div>
         </div>
@@ -111,10 +93,7 @@
         <div class="yes-no-history-box">
           <h2>History</h2>
 
-          <div
-            id="yesNoHistory"
-            class="yes-no-history"
-          >
+          <div id="yesNoHistory" class="yes-no-history">
             No answers picked yet.
           </div>
         </div>
@@ -137,4 +116,5 @@
   <script src="../js/main.js"></script>
   <script src="../js/yes-no-picker.js"></script>
 </body>
+
 </html>
