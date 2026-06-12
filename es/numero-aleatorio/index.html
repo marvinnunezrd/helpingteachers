@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Generador de Números Aleatorios | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="Genera números aleatorios al instante para participación en clase, juegos matemáticos, turnos de estudiantes y decisiones rápidas del maestro."
+  />
+
+  <link rel="canonical" href="https://helpingteachers.io/es/numero-aleatorio/" />
+  <link rel="icon" href="../../assets/favicon/favicon.ico" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html" aria-label="Helping Teachers">
+        <img
+          src="../../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../../random-number/">
+        English
+      </a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">
+        ← Volver al Panel
+      </a>
+
+      <div class="tool-heading">
+        <img
+          src="../../assets/icons/random-number.png"
+          alt=""
+          class="tool-heading-icon"
+          aria-hidden="true"
+        />
+
+        <div>
+          <h1>Generador de Números Aleatorios</h1>
+
+          <p>
+            Genera números aleatorios al instante para participación en clase,
+            juegos matemáticos, turnos de estudiantes y decisiones rápidas del maestro.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div
+        class="timer-card random-number-card"
+        data-ready-message="Listo para generar..."
+        data-generating-message="Generando..."
+        data-range-label="Rango"
+        data-history-label="Historial"
+        data-empty-history="Aún no se han generado números."
+        data-error-range="El número mínimo no puede ser mayor que el número máximo."
+        data-error-empty="Por favor escribe un número mínimo y un número máximo."
+        data-error-exhausted="Ya se generaron todos los números de este rango. Limpia el historial o permite números repetidos."
+      >
+        <div class="random-inputs">
+          <label for="minimumNumber">
+            Número mínimo
+            <input
+              type="number"
+              id="minimumNumber"
+              value="1"
+              inputmode="numeric"
+            />
+          </label>
+
+          <label for="maximumNumber">
+            Número máximo
+            <input
+              type="number"
+              id="maximumNumber"
+              value="100"
+              inputmode="numeric"
+            />
+          </label>
+        </div>
+
+        <div class="random-repeat-toggle">
+          <label for="excludeRepeats">
+            <input
+              type="checkbox"
+              id="excludeRepeats"
+            />
+            Excluir números repetidos
+          </label>
+        </div>
+
+        <div class="timer-actions">
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="generateBtn"
+          >
+            Generar
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="clearRandomBtn"
+          >
+            Limpiar
+          </button>
+        </div>
+
+        <div class="result-box">
+          <h2>Resultado</h2>
+
+          <div
+            id="randomResult"
+            class="random-result"
+            aria-live="polite"
+          >
+            Listo para generar...
+          </div>
+
+          <p
+            id="randomRange"
+            class="random-range"
+          >
+            Rango: 1–100
+          </p>
+        </div>
+
+        <div class="random-history-box">
+          <h2>Historial</h2>
+
+          <div
+            id="randomHistory"
+            class="random-history"
+          >
+            Aún no se han generado números.
+          </div>
+        </div>
+
+        <p class="timer-note">
+          Consejo: usa esta herramienta para elegir estudiantes, turnos,
+          equipos, juegos de repaso, práctica matemática y participación justa.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Herramientas simples para aulas más organizadas.
+    </p>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script src="../../js/random-number.js"></script>
+</body>
+</html>

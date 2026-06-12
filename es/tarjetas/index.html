@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Tarjetas de Estudio | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="Crea tarjetas educativas para vocabulario, palabras frecuentes, matemáticas, ciencias, inglés y español."
+  />
+
+  <meta name="theme-color" content="#2563EB" />
+
+  <link
+    rel="canonical"
+    href="https://helpingteachers.io/es/tarjetas/"
+  />
+
+  <link rel="icon" href="../../assets/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" href="../../assets/favicon/favicon.png" />
+
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="navbar container">
+
+      <a
+        class="logo"
+        href="../index.html"
+        aria-label="Helping Teachers"
+      >
+        <img
+          src="../../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a
+        class="language-switch"
+        href="../../flashcards/"
+      >
+        English
+      </a>
+
+    </nav>
+  </header>
+
+  <main class="tool-main">
+
+    <section class="tool-hero container">
+
+      <a
+        class="back-link"
+        href="../index.html"
+      >
+        ← Volver al Panel
+      </a>
+
+      <div class="tool-heading">
+
+        <img
+          src="../../assets/icons/flashcards.png"
+          alt=""
+          class="tool-heading-icon"
+          aria-hidden="true"
+        />
+
+        <div>
+
+          <h1>Tarjetas de Estudio</h1>
+
+          <p>
+            Crea tarjetas educativas para vocabulario,
+            lectura, matemáticas, ciencias,
+            inglés y español.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="timer-section container">
+
+      <div
+        class="timer-card flashcards-card"
+        data-empty-message="Agrega al menos una tarjeta completa."
+      >
+
+        <button
+          type="button"
+          class="flashcards-exit-fullscreen"
+          id="exitFullscreenFlashcardsBtn"
+        >
+          Salir de Pantalla Completa
+        </button>
+
+        <div class="flashcards-layout">
+
+          <!-- BUILDER -->
+
+          <div class="flashcards-input-panel">
+
+            <div class="flashcards-input-header">
+
+              <div>
+
+                <h2>Constructor de Tarjetas</h2>
+
+                <p class="tool-small-note">
+                  Escribe el frente y el reverso de cada tarjeta.
+                  Puedes agregar tantas como necesites.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div
+              class="flashcards-table"
+              aria-label="Constructor de tarjetas"
+            >
+
+              <div class="flashcards-table-header">
+                <span>Frente</span>
+                <span>Reverso</span>
+                <span></span>
+              </div>
+
+              <div
+                id="flashcardsRows"
+                class="flashcards-rows"
+              >
+
+                <div class="flashcards-row">
+
+                  <input
+                    type="text"
+                    class="flashcard-front-input"
+                    aria-label="Frente de la tarjeta 1"
+                    value="Dog"
+                    placeholder="Frente"
+                  />
+
+                  <input
+                    type="text"
+                    class="flashcard-back-input"
+                    aria-label="Reverso de la tarjeta 1"
+                    value="Perro"
+                    placeholder="Reverso"
+                  />
+
+                  <button
+                    type="button"
+                    class="flashcard-remove-btn"
+                    aria-label="Eliminar tarjeta"
+                  >
+                    ×
+                  </button>
+
+                </div>
+
+                <div class="flashcards-row">
+
+                  <input
+                    type="text"
+                    class="flashcard-front-input"
+                    aria-label="Frente de la tarjeta 2"
+                    value="Cat"
+                    placeholder="Frente"
+                  />
+
+                  <input
+                    type="text"
+                    class="flashcard-back-input"
+                    aria-label="Reverso de la tarjeta 2"
+                    value="Gato"
+                    placeholder="Reverso"
+                  />
+
+                  <button
+                    type="button"
+                    class="flashcard-remove-btn"
+                    aria-label="Eliminar tarjeta"
+                  >
+                    ×
+                  </button>
+
+                </div>
+
+                <div class="flashcards-row">
+
+                  <input
+                    type="text"
+                    class="flashcard-front-input"
+                    aria-label="Frente de la tarjeta 3"
+                    value="House"
+                    placeholder="Frente"
+                  />
+
+                  <input
+                    type="text"
+                    class="flashcard-back-input"
+                    aria-label="Reverso de la tarjeta 3"
+                    value="Casa"
+                    placeholder="Reverso"
+                  />
+
+                  <button
+                    type="button"
+                    class="flashcard-remove-btn"
+                    aria-label="Eliminar tarjeta"
+                  >
+                    ×
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="flashcards-actions">
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="addFlashcardRowBtn"
+              >
+                Agregar Tarjeta
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="generateFlashcardsBtn"
+              >
+                Generar Tarjetas
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="clearFlashcardsBtn"
+              >
+                Limpiar
+              </button>
+
+            </div>
+
+            <div class="flashcards-category-panel">
+
+              <label for="flashcardsCategory">
+                Categoría
+              </label>
+
+              <select id="flashcardsCategory">
+
+                <option value="Vocabulario">
+                  Vocabulario
+                </option>
+
+                <option value="Palabras Frecuentes">
+                  Palabras Frecuentes
+                </option>
+
+                <option value="Matemáticas">
+                  Matemáticas
+                </option>
+
+                <option value="Ciencias">
+                  Ciencias
+                </option>
+
+                <option value="Español">
+                  Español
+                </option>
+
+                <option value="Inglés">
+                  Inglés
+                </option>
+
+              </select>
+
+            </div>
+
+            <p class="tool-small-note">
+              Consejo: deja una fila vacía si no deseas
+              incluir esa tarjeta.
+            </p>
+
+          </div>
+
+          <!-- STUDY MODE -->
+
+          <div class="flashcards-study-panel">
+
+            <div
+              class="flashcards-mode-tabs"
+              aria-label="Modo de tarjetas"
+            >
+
+              <button
+                type="button"
+                class="flashcards-mode-btn active"
+                data-mode="presentation"
+              >
+                Presentación
+              </button>
+
+              <button
+                type="button"
+                class="flashcards-mode-btn"
+                data-mode="student"
+              >
+                Estudiante
+              </button>
+
+            </div>
+
+            <div class="flashcards-status">
+
+              <span id="flashcardsCounter">
+                Tarjeta 1 de 3
+              </span>
+
+              <span id="flashcardsCategoryBadge">
+                Vocabulario
+              </span>
+
+            </div>
+
+            <button
+              type="button"
+              id="flashcardDisplay"
+              class="flashcard-display"
+              aria-live="polite"
+              aria-label="Voltear tarjeta"
+            >
+
+              <span
+                class="flashcard-side-label"
+                id="flashcardSideLabel"
+              >
+                Frente
+              </span>
+
+              <span
+                class="flashcard-text"
+                id="flashcardText"
+              >
+                Dog
+              </span>
+
+              <span
+                class="flashcard-hint"
+                id="flashcardHint"
+              >
+                Haz clic para voltear
+              </span>
+
+            </button>
+
+            <div class="flashcards-controls">
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="previousFlashcardBtn"
+              >
+                Anterior
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="flipFlashcardBtn"
+              >
+                Voltear
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="nextFlashcardBtn"
+              >
+                Siguiente
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-light"
+                id="shuffleFlashcardsBtn"
+              >
+                Mezclar
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-light"
+                id="fullscreenFlashcardsBtn"
+              >
+                Pantalla Completa
+              </button>
+
+            </div>
+
+            <p class="tool-small-note">
+              El modo Presentación es ideal para Smartboards.
+              El modo Estudiante permite voltear cada tarjeta.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div
+          id="flashcardsPreviewList"
+          class="flashcards-preview-list"
+          aria-label="Vista previa de tarjetas"
+        ></div>
+
+        <p class="timer-note">
+          Consejo: utiliza esta herramienta para vocabulario,
+          ESL, lectura, matemáticas, ciencias y repasos rápidos.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Herramientas simples para maestros.
+    </p>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script src="../../js/flashcards.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Classroom Stopwatch | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="A simple classroom stopwatch for teachers. Start, pause, reset, and track time during classroom games, routines, and activities."
+  />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html">
+        <img
+          src="../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../es/cronometro/">Español</a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">← Back to Dashboard</a>
+
+      <div class="tool-heading">
+        <img
+          src="../assets/icons/stopwatch.png"
+          alt=""
+          class="tool-heading-icon"
+        />
+
+        <div>
+          <h1>Classroom Stopwatch</h1>
+          <p>
+            Track time during classroom games, challenges, routines, and movement activities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div class="timer-card stopwatch-card" id="stopwatchCard">
+        <div class="timer-display" id="stopwatchDisplay">00:00.00</div>
+
+        <div class="timer-actions">
+          <button class="btn btn-primary" id="startStopwatchBtn">Start</button>
+          <button class="btn btn-secondary" id="pauseStopwatchBtn">Pause</button>
+          <button class="btn btn-light" id="resetStopwatchBtn">Reset</button>
+        </div>
+
+        <button class="fullscreen-btn" id="fullscreenStopwatchBtn">
+          Fullscreen Mode
+        </button>
+
+        <p class="timer-note">
+          Tip: Use this stopwatch to measure how long students spend on tasks, transitions, or classroom games.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Simple tools for smarter classrooms.
+    </p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/stopwatch.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Noise Meter | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="Monitor classroom noise levels in real time with a visual sound meter designed for teachers."
+  />
+
+  <link rel="canonical" href="https://helpingteachers.io/noise-meter/" />
+  <link rel="icon" href="../assets/favicon/favicon.ico" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html" aria-label="Helping Teachers">
+        <img
+          src="../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../es/medidor-de-ruido/">
+        Español
+      </a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">
+        ← Back to Dashboard
+      </a>
+
+      <div class="tool-heading">
+        <img
+          src="../assets/icons/noise-meter.png"
+          alt=""
+          class="tool-heading-icon"
+          aria-hidden="true"
+        />
+
+        <div>
+          <h1>Noise Meter</h1>
+
+          <p>
+            Monitor classroom noise levels in real time and encourage
+            students to maintain an appropriate volume.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div
+        class="timer-card noise-meter-card"
+        data-start-message="Start Monitoring"
+        data-stop-message="Stop Monitoring"
+        data-ready-message="Waiting for microphone..."
+        data-quiet-message="Quiet"
+        data-medium-message="Getting Loud"
+        data-loud-message="Too Loud"
+        data-mic-error-message="Microphone access is needed."
+      >
+        <div class="noise-display">
+          <div
+            id="noiseEmoji"
+            class="noise-emoji"
+          >
+            🎤
+          </div>
+
+          <div
+            id="noiseStatus"
+            class="noise-status"
+          >
+            Waiting for microphone...
+          </div>
+
+          <div
+            id="noiseValue"
+            class="noise-value"
+          >
+            0%
+          </div>
+        </div>
+
+        <div class="noise-meter-bar-container">
+          <div
+            id="noiseMeterBar"
+            class="noise-meter-bar"
+          ></div>
+        </div>
+
+        <div class="timer-actions">
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="toggleNoiseBtn"
+          >
+            Start Monitoring
+          </button>
+        </div>
+
+        <div class="noise-alert-toggle">
+          <label for="noiseAlertToggle">
+            <input
+              type="checkbox"
+              id="noiseAlertToggle"
+            />
+            Gentle alert when too loud
+          </label>
+        </div>
+
+        <div class="noise-legend">
+          <div class="legend-item">
+            🟢 Quiet
+          </div>
+
+          <div class="legend-item">
+            🟡 Getting Loud
+          </div>
+
+          <div class="legend-item">
+            🔴 Too Loud
+          </div>
+        </div>
+
+        <p class="timer-note">
+          Tip: Display this tool on a classroom screen so students can
+          self-monitor their noise level during activities.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Simple tools for smarter classrooms.
+    </p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/noise-meter.js"></script>
+</body>
+</html>

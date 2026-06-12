@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Generador de Equipos | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="Crea equipos de estudiantes al azar en segundos. Herramienta gratuita para maestros."
+  />
+
+  <link rel="canonical" href="https://helpingteachers.io/es/generador-de-equipos/" />
+  <link rel="icon" href="../../assets/favicon/favicon.ico" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html" aria-label="Helping Teachers">
+        <img
+          src="../../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../../team-generator/">
+        English
+      </a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">
+        ← Volver al panel
+      </a>
+
+      <div class="tool-heading">
+        <img
+          src="../../assets/icons/team-generator.png"
+          alt=""
+          class="tool-heading-icon"
+          aria-hidden="true"
+        />
+
+        <div>
+          <h1>Generador de Equipos</h1>
+
+          <p>
+            Crea equipos de estudiantes al azar en segundos para actividades,
+            proyectos, juegos y aprendizaje colaborativo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div class="timer-card team-generator-card">
+        <label for="names">
+          Nombres de estudiantes
+          <span class="label-helper">(uno por línea)</span>
+        </label>
+
+        <textarea
+          id="names"
+          rows="5"
+          placeholder="Emma&#10;Liam&#10;Olivia&#10;Noah&#10;Sophia"
+          autocomplete="off"
+          spellcheck="false"
+          data-empty-message="Por favor ingresa al menos dos nombres."
+          data-ready-message="Los equipos aparecerán aquí..."
+        ></textarea>
+
+        <div class="team-options">
+          <label for="teamCount">
+            Cantidad de equipos
+          </label>
+
+          <select id="teamCount">
+            <option value="2">2 equipos</option>
+            <option value="3">3 equipos</option>
+            <option value="4">4 equipos</option>
+            <option value="5">5 equipos</option>
+            <option value="6">6 equipos</option>
+          </select>
+        </div>
+
+        <div class="timer-actions">
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="generateBtn"
+          >
+            👥 Generar equipos
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="clearBtn"
+          >
+            Limpiar
+          </button>
+        </div>
+
+        <div class="result-box">
+          <h2>Equipos generados</h2>
+
+          <div
+            id="result"
+            class="team-results"
+            aria-live="polite"
+          >
+            Los equipos aparecerán aquí...
+          </div>
+        </div>
+
+        <p class="timer-note">
+          Consejo: utiliza esta herramienta para crear grupos justos en proyectos,
+          centros de aprendizaje, juegos, lectura y actividades colaborativas.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Herramientas simples para maestros.
+    </p>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script src="../../js/team-generator.js"></script>
+</body>
+</html>

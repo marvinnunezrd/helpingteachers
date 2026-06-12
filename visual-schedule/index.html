@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Visual Schedule | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="Create a classroom visual schedule with activity cards, start times, automatic icons, and real-time current activity tracking for Pre-K, Kindergarten, Elementary, and Special Education."
+  />
+
+  <link rel="canonical" href="https://helpingteachers.io/visual-schedule/" />
+  <link rel="icon" href="../assets/favicon/favicon.ico" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html" aria-label="Helping Teachers">
+        <img
+          src="../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../es/horario-visual/">
+        Español
+      </a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">
+        ← Back to Dashboard
+      </a>
+
+      <div class="tool-heading">
+        <img
+          src="../assets/icons/visual-schedule.png"
+          alt=""
+          class="tool-heading-icon"
+          aria-hidden="true"
+        />
+
+        <div>
+          <h1>Visual Schedule</h1>
+
+          <p>
+            Create a clear classroom schedule with start times, visual cards,
+            automatic icons, and real-time activity tracking.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div
+        class="timer-card visual-schedule-card"
+        data-empty-message="Please add at least one activity."
+        data-current-label="Current Activity"
+        data-completed-label="Completed"
+        data-upcoming-label="Upcoming"
+        data-no-time-label="No time"
+        data-activity-placeholder="Activity"
+        data-time-placeholder="Start time"
+      >
+        <div class="visual-schedule-layout">
+          <div class="schedule-input-panel">
+            <div class="schedule-input-header">
+              <div>
+                <h2>Schedule Builder</h2>
+                <p class="tool-small-note">
+                  Add each activity and its start time.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-secondary schedule-add-btn"
+                id="addScheduleRowBtn"
+              >
+                + Add Activity
+              </button>
+            </div>
+
+            <div
+              id="scheduleRows"
+              class="schedule-rows"
+            >
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Morning Meeting"
+                  placeholder="Activity"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="08:00"
+                  aria-label="Start time"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Remove activity"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Math"
+                  placeholder="Activity"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="08:45"
+                  aria-label="Start time"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Remove activity"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Reading"
+                  placeholder="Activity"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="09:30"
+                  aria-label="Start time"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Remove activity"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Recess"
+                  placeholder="Activity"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="10:15"
+                  aria-label="Start time"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Remove activity"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Lunch"
+                  placeholder="Activity"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="11:30"
+                  aria-label="Start time"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Remove activity"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Science"
+                  placeholder="Activity"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="12:30"
+                  aria-label="Start time"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Remove activity"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Art"
+                  placeholder="Activity"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="01:15"
+                  aria-label="Start time"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Remove activity"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Dismissal"
+                  placeholder="Activity"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="02:45"
+                  aria-label="Start time"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Remove activity"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+
+            <p class="tool-small-note">
+              Tip: A new empty row appears automatically when you type in the last row.
+            </p>
+          </div>
+
+          <div class="schedule-preview-panel">
+            <div class="schedule-controls">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="previousActivityBtn"
+              >
+                Previous
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="nextActivityBtn"
+              >
+                Next
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="resetScheduleBtn"
+              >
+                Reset
+              </button>
+            </div>
+
+            <div
+              id="currentActivityBox"
+              class="current-activity-box"
+              aria-live="polite"
+            >
+              Current Activity: ☀️ Morning Meeting
+            </div>
+
+            <p class="tool-small-note">
+              The current activity updates automatically based on the start times.
+              You can also use Previous and Next for manual classroom control.
+            </p>
+          </div>
+        </div>
+
+        <div
+          id="visualScheduleList"
+          class="visual-schedule-list"
+        ></div>
+
+        <p class="timer-note">
+          Tip: Use this tool for classroom routines, transitions,
+          special education support, morning schedules, and daily activity flow.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Simple tools for smarter classrooms.
+    </p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/visual-schedule.js"></script>
+</body>
+</html>

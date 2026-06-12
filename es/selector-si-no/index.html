@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Selector Sí o No | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="Obtén respuestas rápidas de sí o no para decisiones en el aula, juegos educativos, participación de estudiantes y actividades divertidas."
+  />
+
+  <link rel="canonical" href="https://helpingteachers.io/es/selector-si-no/" />
+  <link rel="icon" href="../../assets/favicon/favicon.ico" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html" aria-label="Helping Teachers">
+        <img
+          src="../../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../../yes-no-picker/">
+        English
+      </a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">
+        ← Volver al Panel
+      </a>
+
+      <div class="tool-heading">
+        <img
+          src="../../assets/icons/yes-no-picker.png"
+          alt=""
+          class="tool-heading-icon"
+          aria-hidden="true"
+        />
+
+        <div>
+          <h1>Selector Sí o No</h1>
+
+          <p>
+            Obtén respuestas rápidas para decisiones en el aula,
+            juegos educativos, participación de estudiantes y actividades divertidas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div
+        class="timer-card yes-no-card"
+        data-thinking-message="Pensando..."
+        data-ready-message="Listo para elegir..."
+        data-history-label="Historial"
+        data-empty-history="Aún no se han seleccionado respuestas."
+        data-simple-yes="SÍ"
+        data-simple-no="NO"
+        data-fun-options="¡Claro que sí!,¡Hazlo!,¡Definitivamente!,¡Suena bien!,Hoy no.,Tal vez después.,¡Inténtalo otra vez!,Pregunta más tarde."
+      >
+        <div class="yes-no-options">
+          <label for="pickerMode">
+            Modo
+            <select id="pickerMode">
+              <option value="simple">Simple</option>
+              <option value="fun">Divertido</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="timer-actions">
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="pickAnswerBtn"
+          >
+            Elegir Respuesta
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="clearYesNoBtn"
+          >
+            Limpiar
+          </button>
+        </div>
+
+        <div class="result-box">
+          <h2>Resultado</h2>
+
+          <div
+            id="yesNoResult"
+            class="yes-no-result"
+            aria-live="polite"
+          >
+            Listo para elegir...
+          </div>
+        </div>
+
+        <div class="yes-no-history-box">
+          <h2>Historial</h2>
+
+          <div
+            id="yesNoHistory"
+            class="yes-no-history"
+          >
+            Aún no se han seleccionado respuestas.
+          </div>
+        </div>
+
+        <p class="timer-note">
+          Consejo: utiliza esta herramienta para tomar decisiones rápidas,
+          juegos de participación, actividades de repaso, preguntas grupales
+          y momentos divertidos en el aula.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Herramientas simples para aulas más organizadas.
+    </p>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script src="../../js/yes-no-picker.js"></script>
+</body>
+</html>

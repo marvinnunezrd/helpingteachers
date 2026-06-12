@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Name Spinner | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="Randomly select a student name from your classroom list. Free Name Spinner tool for teachers."
+  />
+
+  <link rel="canonical" href="https://helpingteachers.io/name-spinner/" />
+  <link rel="icon" href="../assets/favicon/favicon.ico" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html" aria-label="Helping Teachers">
+        <img
+          src="../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../es/ruleta-de-nombres/">
+        Español
+      </a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">
+        ← Back to Dashboard
+      </a>
+
+      <div class="tool-heading">
+        <img
+          src="../assets/icons/name-spinner.png"
+          alt=""
+          class="tool-heading-icon"
+          aria-hidden="true"
+        />
+
+        <div>
+          <h1>Name Spinner</h1>
+
+          <p>
+            Enter student names and randomly choose one for fair classroom participation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div
+        class="timer-card name-spinner-card"
+        data-empty-message="Please enter at least one name."
+        data-ready-message="Ready to spin..."
+        data-spinning-message="Choosing..."
+        data-selected-label="Selected Student"
+      >
+        <div class="name-spinner-layout">
+          <div class="name-spinner-builder-panel">
+            <div class="name-spinner-header">
+              <div>
+                <h2>Student List</h2>
+
+                <p class="tool-small-note">
+                  Add students one by one, or paste a full class list.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="name-list-table"
+              aria-label="Student name list"
+            >
+              <div class="name-list-table-header">
+                <span>Student Name</span>
+                <span></span>
+              </div>
+
+              <div id="nameRows" class="name-list-rows">
+                <div class="name-list-row">
+                  <input
+                    type="text"
+                    class="student-name-input"
+                    aria-label="Student name 1"
+                    value="Emma"
+                    placeholder="Student name"
+                  />
+
+                  <button
+                    type="button"
+                    class="student-remove-btn"
+                    aria-label="Remove student"
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <div class="name-list-row">
+                  <input
+                    type="text"
+                    class="student-name-input"
+                    aria-label="Student name 2"
+                    value="Liam"
+                    placeholder="Student name"
+                  />
+
+                  <button
+                    type="button"
+                    class="student-remove-btn"
+                    aria-label="Remove student"
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <div class="name-list-row">
+                  <input
+                    type="text"
+                    class="student-name-input"
+                    aria-label="Student name 3"
+                    value="Olivia"
+                    placeholder="Student name"
+                  />
+
+                  <button
+                    type="button"
+                    class="student-remove-btn"
+                    aria-label="Remove student"
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <div class="name-list-row">
+                  <input
+                    type="text"
+                    class="student-name-input"
+                    aria-label="Student name 4"
+                    value="Noah"
+                    placeholder="Student name"
+                  />
+
+                  <button
+                    type="button"
+                    class="student-remove-btn"
+                    aria-label="Remove student"
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <div class="name-list-row">
+                  <input
+                    type="text"
+                    class="student-name-input"
+                    aria-label="Student name 5"
+                    value="Sophia"
+                    placeholder="Student name"
+                  />
+
+                  <button
+                    type="button"
+                    class="student-remove-btn"
+                    aria-label="Remove student"
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="name-spinner-actions">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="addStudentBtn"
+              >
+                Add Student
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-light"
+                id="pasteListToggleBtn"
+              >
+                Paste Class List
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="clearBtn"
+              >
+                Clear
+              </button>
+            </div>
+
+            <div
+              class="paste-list-panel"
+              id="pasteListPanel"
+              hidden
+            >
+              <label for="pasteNames">
+                Paste names here
+              </label>
+
+              <textarea
+                id="pasteNames"
+                rows="5"
+                placeholder="Emma&#10;Liam&#10;Olivia&#10;Noah&#10;Sophia"
+                autocomplete="off"
+                spellcheck="false"
+              ></textarea>
+
+              <div class="name-spinner-actions">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="importNamesBtn"
+                >
+                  Import Names
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-light"
+                  id="cancelPasteBtn"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+
+            <p class="tool-small-note">
+              Tip: Write in the last empty row and a new row will appear automatically.
+            </p>
+          </div>
+
+          <div class="name-spinner-result-panel">
+            <div class="name-spinner-status">
+              <span id="studentCountBadge">5 Students</span>
+              <span>Fair Pick</span>
+            </div>
+
+            <div class="result-box name-spinner-result-box">
+              <h2>Selected Student</h2>
+
+              <div
+                id="result"
+                class="result-display name-spinner-result-display"
+                aria-live="polite"
+              >
+                Ready to spin...
+              </div>
+            </div>
+
+            <div class="name-spinner-main-actions">
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="spinBtn"
+              >
+                🎯 Spin
+              </button>
+            </div>
+
+            <div
+              id="recentPicks"
+              class="recent-picks"
+              aria-label="Recent picks"
+            >
+              <h3>Recent Picks</h3>
+
+              <div
+                id="recentPicksList"
+                class="recent-picks-list"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="timer-note">
+          Tip: Use this spinner for participation, classroom games,
+          reading turns, or group activities.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Simple tools for smarter classrooms.
+    </p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/name-spinner.js"></script>
+</body>
+</html>

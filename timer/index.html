@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Classroom Timer | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="A simple classroom timer for teachers. Use quick presets, start, pause, reset, and fullscreen mode."
+  />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html">
+        <img
+          src="../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../es/temporizador/index.html">Español</a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">← Back to Dashboard</a>
+
+      <div class="tool-heading">
+        <img src="../assets/icons/timer.png" alt="" class="tool-heading-icon" />
+        <div>
+          <h1>Classroom Timer</h1>
+          <p>A simple visual timer for activities, centers, transitions, and classroom routines.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div class="timer-card" id="timerCard">
+        <div class="timer-display" id="timerDisplay">05:00</div>
+
+        <div class="timer-inputs" aria-label="Set timer manually">
+          <label>
+            Minutes
+            <input type="number" id="minutesInput" min="0" max="999" value="5" />
+          </label>
+
+          <label>
+            Seconds
+            <input type="number" id="secondsInput" min="0" max="59" value="0" />
+          </label>
+        </div>
+
+        <div class="timer-actions">
+          <button class="btn btn-primary" id="startBtn">Start</button>
+          <button class="btn btn-secondary" id="pauseBtn">Pause</button>
+          <button class="btn btn-light" id="resetBtn">Reset</button>
+        </div>
+
+        <div class="timer-presets">
+          <h2>Quick Presets</h2>
+
+          <div class="preset-grid">
+            <button data-minutes="1">1 min</button>
+            <button data-minutes="3">3 min</button>
+            <button data-minutes="5">5 min</button>
+            <button data-minutes="10">10 min</button>
+            <button data-minutes="15">15 min</button>
+            <button data-minutes="20">20 min</button>
+          </div>
+        </div>
+
+        <button class="fullscreen-btn" id="fullscreenBtn">Fullscreen Mode</button>
+
+        <p class="timer-note">
+          Tip: Use this timer for centers, cleanup, reading time, or classroom transitions.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Helping Teachers. Simple tools for smarter classrooms.</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/timer.js"></script>
+</body>
+</html>

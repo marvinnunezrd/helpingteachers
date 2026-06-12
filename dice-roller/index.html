@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Dice Roller | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="Roll one or multiple virtual dice instantly for classroom games, math practice, probability lessons, and educational activities."
+  />
+
+  <link rel="canonical" href="https://helpingteachers.io/dice-roller/" />
+  <link rel="icon" href="../assets/favicon/favicon.ico" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html" aria-label="Helping Teachers">
+        <img
+          src="../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../es/dados/">
+        Español
+      </a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">
+        ← Back to Dashboard
+      </a>
+
+      <div class="tool-heading">
+        <img
+          src="../assets/icons/dice-roller.png"
+          alt=""
+          class="tool-heading-icon"
+          aria-hidden="true"
+        />
+
+        <div>
+          <h1>Dice Roller</h1>
+
+          <p>
+            Roll one or multiple virtual dice instantly for classroom games,
+            math practice, probability lessons, and educational activities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div class="timer-card dice-roller-card">
+        <div class="dice-options">
+          <div class="dice-option">
+            <label for="diceType">
+              Dice Type
+            </label>
+
+            <select id="diceType">
+              <option value="4">D4</option>
+              <option value="6" selected>D6</option>
+              <option value="8">D8</option>
+              <option value="10">D10</option>
+              <option value="12">D12</option>
+              <option value="20">D20</option>
+            </select>
+          </div>
+
+          <div class="dice-option">
+            <label for="diceCount">
+              Number of Dice
+            </label>
+
+            <select
+              id="diceCount"
+              data-ready-message="🎲 Ready to roll..."
+            >
+              <option value="1" selected>1 die</option>
+              <option value="2">2 dice</option>
+              <option value="3">3 dice</option>
+              <option value="4">4 dice</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="dice-total-toggle">
+          <label for="showTotal">
+            <input
+              type="checkbox"
+              id="showTotal"
+            />
+            Show total
+          </label>
+        </div>
+
+        <div class="timer-actions">
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="rollBtn"
+          >
+            🎲 Roll Dice
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="clearBtn"
+          >
+            Clear
+          </button>
+        </div>
+
+        <div class="result-box">
+          <h2>Result</h2>
+
+          <div
+            id="result"
+            class="dice-results"
+            aria-live="polite"
+          >
+            🎲 Ready to roll...
+          </div>
+        </div>
+
+        <p class="timer-note">
+          Tip: Roll multiple dice for addition practice, probability lessons,
+          classroom games, quick decisions, and educational challenges.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Simple tools for smarter classrooms.
+    </p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/dice-roller.js"></script>
+</body>
+</html>

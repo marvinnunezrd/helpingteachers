@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Ruleta de Premios | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="Gira una divertida ruleta de premios para recompensas en el aula, incentivos para estudiantes, motivación positiva, juegos y actividades educativas."
+  />
+
+  <link rel="canonical" href="https://helpingteachers.io/es/ruleta-de-premios/" />
+  <link rel="icon" href="../../assets/favicon/favicon.ico" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html" aria-label="Helping Teachers">
+        <img
+          src="../../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../../reward-wheel/">
+        English
+      </a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">
+        ← Volver al Panel
+      </a>
+
+      <div class="tool-heading">
+        <img
+          src="../../assets/icons/reward-wheel.png"
+          alt=""
+          class="tool-heading-icon"
+          aria-hidden="true"
+        />
+
+        <div>
+          <h1>Ruleta de Premios</h1>
+
+          <p>
+            Gira una divertida ruleta para seleccionar recompensas,
+            incentivos, premios, actividades y dinámicas para el aula.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div
+        class="timer-card reward-wheel-card"
+        data-ready-message="Lista para girar..."
+        data-spinning-message="Girando..."
+        data-empty-options="Agrega al menos dos premios."
+        data-result-label="Ganador"
+        data-history-label="Historial"
+        data-empty-history="Aún no se han seleccionado premios."
+      >
+        <div class="reward-wheel-layout">
+          <div class="reward-wheel-area">
+            <div class="wheel-pointer" aria-hidden="true"></div>
+
+            <div
+              class="reward-wheel"
+              id="rewardWheel"
+              aria-hidden="true"
+            >
+              <div class="wheel-center">HT</div>
+            </div>
+          </div>
+
+          <div class="reward-options-panel">
+            <label for="rewardOptions">
+              Premios
+            </label>
+
+            <textarea
+              id="rewardOptions"
+              rows="8"
+              spellcheck="true"
+            >Recreo extra
+Líder de fila
+Elegir una canción
+Pase de tarea
+Sticker
+Ayudante del maestro
+Elegir un juego
+Tiempo para dibujar</textarea>
+
+            <p class="tool-small-note">
+              Escribe un premio por línea.
+            </p>
+          </div>
+        </div>
+
+        <div class="timer-actions">
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="spinRewardBtn"
+          >
+            Girar
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="resetRewardBtn"
+          >
+            Reiniciar
+          </button>
+        </div>
+
+        <div class="result-box reward-result-box">
+          <h2>Ganador</h2>
+
+          <div
+            id="rewardResult"
+            class="reward-result"
+            aria-live="polite"
+          >
+            Lista para girar...
+          </div>
+        </div>
+
+        <div class="reward-history-box">
+          <h2>Historial</h2>
+
+          <div
+            id="rewardHistory"
+            class="reward-history"
+          >
+            Aún no se han seleccionado premios.
+          </div>
+        </div>
+
+        <p class="timer-note">
+          Consejo: utiliza esta ruleta para recompensas,
+          responsabilidades del aula, comportamiento positivo,
+          juegos educativos, transiciones y motivación estudiantil.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Herramientas simples para aulas más organizadas.
+    </p>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script src="../../js/reward-wheel.js"></script>
+</body>
+</html>

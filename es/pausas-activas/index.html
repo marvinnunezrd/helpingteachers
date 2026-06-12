@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Pausas Activas | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="Genera pausas activas rápidas para el salón de clases con movimiento, atención plena, estiramiento y actividades divertidas."
+  />
+  <meta name="theme-color" content="#2563EB" />
+
+  <link rel="canonical" href="https://helpingteachers.io/es/pausas-activas/" />
+  <link rel="icon" href="../../assets/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" href="../../assets/favicon/favicon.png" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html" aria-label="Helping Teachers">
+        <img
+          src="../../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../../brain-breaks/">
+        English
+      </a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">
+        ← Volver al Panel
+      </a>
+
+      <div class="tool-heading">
+        <img
+          src="../../assets/icons/brain-breaks.png"
+          alt=""
+          class="tool-heading-icon"
+          aria-hidden="true"
+        />
+
+        <div>
+          <h1>Pausas Activas</h1>
+
+          <p>
+            Dale a tu clase un reinicio rápido con movimiento,
+            atención plena, estiramiento y actividades divertidas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div
+        class="timer-card brain-breaks-card"
+        data-empty-message="Elige una categoría y genera una pausa activa."
+      >
+        <button
+          type="button"
+          class="brain-breaks-exit-fullscreen"
+          id="exitBrainBreaksFullscreenBtn"
+        >
+          Salir de Pantalla Completa
+        </button>
+
+        <div class="brain-breaks-layout">
+          <div class="brain-breaks-panel">
+            <h2>Elige una Categoría</h2>
+
+            <p class="tool-small-note">
+              Selecciona el tipo de reinicio que tu clase necesita.
+            </p>
+
+            <div
+              class="brain-breaks-categories"
+              aria-label="Categorías de pausas activas"
+            >
+              <button
+                type="button"
+                class="brain-break-category-btn active"
+                data-category="all"
+              >
+                Todas
+              </button>
+
+              <button
+                type="button"
+                class="brain-break-category-btn"
+                data-category="movement"
+              >
+                Movimiento
+              </button>
+
+              <button
+                type="button"
+                class="brain-break-category-btn"
+                data-category="mindfulness"
+              >
+                Atención Plena
+              </button>
+
+              <button
+                type="button"
+                class="brain-break-category-btn"
+                data-category="stretching"
+              >
+                Estiramiento
+              </button>
+
+              <button
+                type="button"
+                class="brain-break-category-btn"
+                data-category="classroom-fun"
+              >
+                Diversión
+              </button>
+            </div>
+
+            <div class="brain-breaks-actions">
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="newBrainBreakBtn"
+              >
+                Nueva Pausa
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="saveBrainBreakBtn"
+              >
+                ❤️ Guardar Favorita
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-light"
+                id="brainBreaksFullscreenBtn"
+              >
+                Pantalla Completa
+              </button>
+            </div>
+
+            <p class="tool-small-note">
+              Consejo: usa esta herramienta cuando los estudiantes necesiten
+              un descanso corto antes de pasar a la próxima actividad.
+            </p>
+          </div>
+
+          <div class="brain-breaks-display-panel">
+            <div class="brain-breaks-status">
+              <span id="brainBreakCategoryBadge">Todas</span>
+              <span id="brainBreakCounter">Pausa Activa</span>
+            </div>
+
+            <div
+              class="brain-break-display"
+              id="brainBreakDisplay"
+              aria-live="polite"
+            >
+              <span class="brain-break-emoji" id="brainBreakEmoji">
+                🦘
+              </span>
+
+              <span class="brain-break-title" id="brainBreakTitle">
+                Salta 10 Veces
+              </span>
+
+              <span class="brain-break-description" id="brainBreakDescription">
+                Ponte de pie y salta suavemente 10 veces en tu lugar.
+              </span>
+            </div>
+
+            <div class="brain-breaks-controls">
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="anotherBrainBreakBtn"
+              >
+                Otra Pausa
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="saveBrainBreakBtnBottom"
+              >
+                ❤️ Guardar Favorita
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="brain-breaks-favorites-section">
+          <div class="brain-breaks-favorites-header">
+            <h2>Pausas Favoritas</h2>
+
+            <button
+              type="button"
+              class="btn btn-light"
+              id="clearBrainBreakFavoritesBtn"
+            >
+              Limpiar Favoritas
+            </button>
+          </div>
+
+          <div
+            id="brainBreakFavoritesList"
+            class="brain-breaks-favorites-list"
+            aria-label="Pausas activas favoritas"
+          >
+          </div>
+        </div>
+
+        <p class="timer-note">
+          Consejo: las pausas activas son ideales entre lecciones,
+          después de evaluaciones, antes de transiciones o cuando la clase
+          necesita recuperar energía.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Herramientas simples para maestros.
+    </p>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script src="../../js/brain-breaks.js"></script>
+</body>
+</html>

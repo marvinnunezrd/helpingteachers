@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Temporizador de Aula | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="Temporizador de aula para docentes. Incluye tiempos rápidos, iniciar, pausar, reiniciar y pantalla completa."
+  />
+
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html">
+        <img
+          src="../../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../../timer/">English</a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">← Volver al Inicio</a>
+
+      <div class="tool-heading">
+        <img src="../../assets/icons/timer.png" alt="" class="tool-heading-icon" />
+        <div>
+          <h1>Temporizador de Aula</h1>
+          <p>
+            Un temporizador visual para actividades, estaciones, transiciones y rutinas del aula.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div class="timer-card" id="timerCard">
+        <div class="timer-display" id="timerDisplay">05:00</div>
+
+        <div class="timer-inputs" aria-label="Configurar temporizador manualmente">
+          <label>
+            Minutos
+            <input type="number" id="minutesInput" min="0" max="999" value="5" />
+          </label>
+
+          <label>
+            Segundos
+            <input type="number" id="secondsInput" min="0" max="59" value="0" />
+          </label>
+        </div>
+
+        <div class="timer-actions">
+          <button class="btn btn-primary" id="startBtn">Iniciar</button>
+          <button class="btn btn-secondary" id="pauseBtn">Pausar</button>
+          <button class="btn btn-light" id="resetBtn">Reiniciar</button>
+        </div>
+
+        <div class="timer-presets">
+          <h2>Tiempos Rápidos</h2>
+
+          <div class="preset-grid">
+            <button data-minutes="1">1 min</button>
+            <button data-minutes="3">3 min</button>
+            <button data-minutes="5">5 min</button>
+            <button data-minutes="10">10 min</button>
+            <button data-minutes="15">15 min</button>
+            <button data-minutes="20">20 min</button>
+          </div>
+        </div>
+
+        <button class="fullscreen-btn" id="fullscreenBtn">
+          Pantalla Completa
+        </button>
+
+        <p class="timer-note">
+          Consejo: Utiliza este temporizador para estaciones, lectura,
+          limpieza o transiciones en el aula.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Herramientas simples para aulas más inteligentes.
+    </p>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script src="../../js/timer.js"></script>
+</body>
+</html>

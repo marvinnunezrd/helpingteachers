@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Cronómetro de Aula | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="Cronómetro simple para docentes. Ideal para juegos, retos, rutinas, transiciones y actividades de movimiento en el aula."
+  />
+
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html">
+        <img
+          src="../../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../../stopwatch/">English</a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">← Volver al Inicio</a>
+
+      <div class="tool-heading">
+        <img
+          src="../../assets/icons/stopwatch.png"
+          alt=""
+          class="tool-heading-icon"
+        />
+
+        <div>
+          <h1>Cronómetro de Aula</h1>
+          <p>
+            Mide el tiempo durante juegos, retos, rutinas, transiciones y actividades de movimiento.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div class="timer-card stopwatch-card" id="stopwatchCard">
+        <div class="timer-display" id="stopwatchDisplay">00:00.00</div>
+
+        <div class="timer-actions">
+          <button class="btn btn-primary" id="startStopwatchBtn">Iniciar</button>
+          <button class="btn btn-secondary" id="pauseStopwatchBtn">Pausar</button>
+          <button class="btn btn-light" id="resetStopwatchBtn">Reiniciar</button>
+        </div>
+
+        <button class="fullscreen-btn" id="fullscreenStopwatchBtn">
+          Pantalla Completa
+        </button>
+
+        <p class="timer-note">
+          Consejo: usa este cronómetro para medir cuánto tiempo toman los estudiantes en tareas, transiciones o juegos de aula.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Herramientas simples para aulas más inteligentes.
+    </p>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script src="../../js/stopwatch.js"></script>
+</body>
+</html>

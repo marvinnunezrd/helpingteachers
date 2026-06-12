@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Brain Breaks | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="Generate quick classroom brain breaks for movement, mindfulness, stretching, and fun classroom reset activities."
+  />
+  <meta name="theme-color" content="#2563EB" />
+
+  <link rel="canonical" href="https://helpingteachers.io/brain-breaks/" />
+  <link rel="icon" href="../assets/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" href="../assets/favicon/favicon.png" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html" aria-label="Helping Teachers">
+        <img
+          src="../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../es/pausas-activas/">
+        Español
+      </a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">
+        ← Back to Dashboard
+      </a>
+
+      <div class="tool-heading">
+        <img
+          src="../assets/icons/brain-breaks.png"
+          alt=""
+          class="tool-heading-icon"
+          aria-hidden="true"
+        />
+
+        <div>
+          <h1>Brain Breaks</h1>
+
+          <p>
+            Give your class a quick reset with movement,
+            mindfulness, stretching, and fun classroom activities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div
+        class="timer-card brain-breaks-card"
+        data-empty-message="Choose a category and generate a brain break."
+      >
+        <button
+          type="button"
+          class="brain-breaks-exit-fullscreen"
+          id="exitBrainBreaksFullscreenBtn"
+        >
+          Exit Fullscreen
+        </button>
+
+        <div class="brain-breaks-layout">
+          <div class="brain-breaks-panel">
+            <h2>Choose a Category</h2>
+
+            <p class="tool-small-note">
+              Pick the type of classroom reset you need.
+            </p>
+
+            <div class="brain-breaks-categories" aria-label="Brain break categories">
+              <button
+                type="button"
+                class="brain-break-category-btn active"
+                data-category="all"
+              >
+                All
+              </button>
+
+              <button
+                type="button"
+                class="brain-break-category-btn"
+                data-category="movement"
+              >
+                Movement
+              </button>
+
+              <button
+                type="button"
+                class="brain-break-category-btn"
+                data-category="mindfulness"
+              >
+                Mindfulness
+              </button>
+
+              <button
+                type="button"
+                class="brain-break-category-btn"
+                data-category="stretching"
+              >
+                Stretching
+              </button>
+
+              <button
+                type="button"
+                class="brain-break-category-btn"
+                data-category="classroom-fun"
+              >
+                Classroom Fun
+              </button>
+            </div>
+
+            <div class="brain-breaks-actions">
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="newBrainBreakBtn"
+              >
+                New Brain Break
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="saveBrainBreakBtn"
+              >
+                ❤️ Save Favorite
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-light"
+                id="brainBreaksFullscreenBtn"
+              >
+                Fullscreen
+              </button>
+            </div>
+
+            <p class="tool-small-note">
+              Tip: Use this when students need a short reset before
+              moving to the next activity.
+            </p>
+          </div>
+
+          <div class="brain-breaks-display-panel">
+            <div class="brain-breaks-status">
+              <span id="brainBreakCategoryBadge">All</span>
+              <span id="brainBreakCounter">Brain Break</span>
+            </div>
+
+            <div
+              class="brain-break-display"
+              id="brainBreakDisplay"
+              aria-live="polite"
+            >
+              <span class="brain-break-emoji" id="brainBreakEmoji">
+                🦘
+              </span>
+
+              <span class="brain-break-title" id="brainBreakTitle">
+                Jump 10 Times
+              </span>
+
+              <span class="brain-break-description" id="brainBreakDescription">
+                Stand up and do 10 gentle jumps in place.
+              </span>
+            </div>
+
+            <div class="brain-breaks-controls">
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="anotherBrainBreakBtn"
+              >
+                Another One
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="saveBrainBreakBtnBottom"
+              >
+                ❤️ Save Favorite
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="brain-breaks-favorites-section">
+          <div class="brain-breaks-favorites-header">
+            <h2>Favorite Brain Breaks</h2>
+
+            <button
+              type="button"
+              class="btn btn-light"
+              id="clearBrainBreakFavoritesBtn"
+            >
+              Clear Favorites
+            </button>
+          </div>
+
+          <div
+            id="brainBreakFavoritesList"
+            class="brain-breaks-favorites-list"
+            aria-label="Favorite brain breaks"
+          >
+          </div>
+        </div>
+
+        <p class="timer-note">
+          Tip: Brain breaks are great between lessons, after testing,
+          before transitions, or when the class needs fresh energy.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Simple tools for smarter classrooms.
+    </p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/brain-breaks.js"></script>
+</body>
+</html>

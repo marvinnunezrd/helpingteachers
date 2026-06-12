@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Horario Visual | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="Crea un horario visual para el aula con actividades, horarios de inicio, iconos automáticos y seguimiento en tiempo real para Pre-K, Kindergarten, Elementary y Educación Especial."
+  />
+
+  <link rel="canonical" href="https://helpingteachers.io/es/horario-visual/" />
+  <link rel="icon" href="../../assets/favicon/favicon.ico" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html" aria-label="Helping Teachers">
+        <img
+          src="../../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../../visual-schedule/">
+        English
+      </a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">
+        ← Volver al Panel
+      </a>
+
+      <div class="tool-heading">
+        <img
+          src="../../assets/icons/visual-schedule.png"
+          alt=""
+          class="tool-heading-icon"
+          aria-hidden="true"
+        />
+
+        <div>
+          <h1>Horario Visual</h1>
+
+          <p>
+            Crea un horario visual para el aula con horarios de inicio,
+            iconos automáticos y seguimiento en tiempo real de la actividad actual.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div
+        class="timer-card visual-schedule-card"
+        data-empty-message="Agrega al menos una actividad."
+        data-current-label="Actividad Actual"
+        data-completed-label="Completada"
+        data-upcoming-label="Próxima"
+        data-no-time-label="Sin hora"
+        data-activity-placeholder="Actividad"
+        data-time-placeholder="Hora de inicio"
+        data-current-time-label="Ahora"
+      >
+        <div class="visual-schedule-layout">
+          <div class="schedule-input-panel">
+
+            <div class="schedule-input-header">
+              <div>
+                <h2>Constructor de Horario</h2>
+
+                <p class="tool-small-note">
+                  Agrega cada actividad y su hora de inicio.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-secondary schedule-add-btn"
+                id="addScheduleRowBtn"
+              >
+                + Agregar Actividad
+              </button>
+            </div>
+
+            <div
+              id="scheduleRows"
+              class="schedule-rows"
+            >
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Reunión de la Mañana"
+                  placeholder="Actividad"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="08:00"
+                  aria-label="Hora de inicio"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Eliminar actividad"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Matemáticas"
+                  placeholder="Actividad"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="08:45"
+                  aria-label="Hora de inicio"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Eliminar actividad"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Lectura"
+                  placeholder="Actividad"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="09:30"
+                  aria-label="Hora de inicio"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Eliminar actividad"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Recreo"
+                  placeholder="Actividad"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="10:15"
+                  aria-label="Hora de inicio"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Eliminar actividad"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Almuerzo"
+                  placeholder="Actividad"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="11:30"
+                  aria-label="Hora de inicio"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Eliminar actividad"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Ciencias"
+                  placeholder="Actividad"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="12:30"
+                  aria-label="Hora de inicio"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Eliminar actividad"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Arte"
+                  placeholder="Actividad"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="13:15"
+                  aria-label="Hora de inicio"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Eliminar actividad"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div class="schedule-row">
+                <input
+                  type="text"
+                  class="schedule-activity-input"
+                  value="Salida"
+                  placeholder="Actividad"
+                />
+
+                <input
+                  type="time"
+                  class="schedule-time-input"
+                  value="14:45"
+                  aria-label="Hora de inicio"
+                />
+
+                <button
+                  type="button"
+                  class="schedule-remove-btn"
+                  aria-label="Eliminar actividad"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+
+            <p class="tool-small-note">
+              Consejo: una nueva fila vacía aparecerá automáticamente cuando escribas en la última fila.
+            </p>
+
+          </div>
+
+          <div class="schedule-preview-panel">
+
+            <div class="schedule-controls">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="previousActivityBtn"
+              >
+                Anterior
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="nextActivityBtn"
+              >
+                Siguiente
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="resetScheduleBtn"
+              >
+                Reiniciar
+              </button>
+            </div>
+
+            <div
+              id="currentActivityBox"
+              class="current-activity-box"
+              aria-live="polite"
+            >
+              Actividad Actual: ☀️ Reunión de la Mañana
+            </div>
+
+            <p class="tool-small-note">
+              La actividad actual se actualiza automáticamente según la hora de inicio.
+              También puedes usar Anterior y Siguiente para control manual en el aula.
+            </p>
+
+          </div>
+        </div>
+
+        <div
+          id="visualScheduleList"
+          class="visual-schedule-list"
+        ></div>
+
+        <p class="timer-note">
+          Consejo: utiliza esta herramienta para rutinas diarias,
+          transiciones, educación especial, horarios visuales,
+          aulas bilingües y organización del día escolar.
+        </p>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Herramientas simples para aulas más organizadas.
+    </p>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script src="../../js/visual-schedule.js"></script>
+</body>
+</html>

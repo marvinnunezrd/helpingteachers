@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Reward Wheel | Helping Teachers</title>
+
+  <meta
+    name="description"
+    content="Spin a fun reward wheel for classroom prizes, student incentives, behavior motivation, games, and teacher-led activities."
+  />
+
+  <link rel="canonical" href="https://helpingteachers.io/reward-wheel/" />
+  <link rel="icon" href="../assets/favicon/favicon.ico" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html" aria-label="Helping Teachers">
+        <img
+          src="../assets/logo/helping-teachers-logo-horizontal.png"
+          alt="Helping Teachers"
+        />
+      </a>
+
+      <a class="language-switch" href="../es/ruleta-de-premios/">
+        Español
+      </a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero container">
+      <a class="back-link" href="../index.html">
+        ← Back to Dashboard
+      </a>
+
+      <div class="tool-heading">
+        <img
+          src="../assets/icons/reward-wheel.png"
+          alt=""
+          class="tool-heading-icon"
+          aria-hidden="true"
+        />
+
+        <div>
+          <h1>Reward Wheel</h1>
+
+          <p>
+            Spin a fun reward wheel for classroom prizes, student incentives,
+            behavior motivation, games, and teacher-led activities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timer-section container">
+      <div
+        class="timer-card reward-wheel-card"
+        data-ready-message="Ready to spin..."
+        data-spinning-message="Spinning..."
+        data-empty-options="Please add at least two rewards."
+        data-result-label="Winner"
+        data-history-label="History"
+        data-empty-history="No rewards picked yet."
+      >
+        <div class="reward-wheel-layout">
+          <div class="reward-wheel-area">
+            <div class="wheel-pointer" aria-hidden="true"></div>
+
+            <div
+              class="reward-wheel"
+              id="rewardWheel"
+              aria-hidden="true"
+            >
+              <div class="wheel-center">HT</div>
+            </div>
+          </div>
+
+          <div class="reward-options-panel">
+            <label for="rewardOptions">
+              Rewards
+            </label>
+
+            <textarea
+              id="rewardOptions"
+              rows="8"
+              spellcheck="true"
+            >Extra recess
+Line leader
+Choose a song
+Homework pass
+Sticker
+Teacher helper
+Pick a game
+Free draw time</textarea>
+
+            <p class="tool-small-note">
+              Write one reward per line.
+            </p>
+          </div>
+        </div>
+
+        <div class="timer-actions">
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="spinRewardBtn"
+          >
+            Spin
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="resetRewardBtn"
+          >
+            Reset
+          </button>
+        </div>
+
+        <div class="result-box reward-result-box">
+          <h2>Winner</h2>
+
+          <div
+            id="rewardResult"
+            class="reward-result"
+            aria-live="polite"
+          >
+            Ready to spin...
+          </div>
+        </div>
+
+        <div class="reward-history-box">
+          <h2>History</h2>
+
+          <div
+            id="rewardHistory"
+            class="reward-history"
+          >
+            No rewards picked yet.
+          </div>
+        </div>
+
+        <p class="timer-note">
+          Tip: Use this wheel for rewards, classroom jobs, positive behavior,
+          review games, transitions, and student motivation.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Helping Teachers.
+      Simple tools for smarter classrooms.
+    </p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/reward-wheel.js"></script>
+</body>
+</html>
