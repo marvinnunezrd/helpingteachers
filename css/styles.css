@@ -812,6 +812,43 @@ h1 {
 .name-spinner-main-actions .btn {
   min-width: 180px;
 }
+.name-spinner-card:fullscreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: none;
+  width: 100vw;
+  height: 100vh;
+  padding: clamp(1rem, 4vw, 4rem);
+  border-radius: 0;
+  overflow-y: auto;
+}
+
+.name-spinner-card:fullscreen .name-spinner-layout {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  width: min(1100px, 100%);
+  margin: 0 auto;
+}
+
+.name-spinner-card:fullscreen .name-spinner-builder-panel,
+.name-spinner-card:fullscreen .recent-picks,
+.name-spinner-card:fullscreen .timer-note {
+  display: none;
+}
+
+.name-spinner-card:fullscreen .name-spinner-result-panel {
+  text-align: center;
+}
+
+.name-spinner-card:fullscreen .name-spinner-status {
+  justify-content: center;
+}
+
+.name-spinner-card:fullscreen .name-spinner-result-display {
+  min-height: clamp(260px, 48vh, 620px);
+  font-size: clamp(4rem, 12vw, 11rem);
+}
 
 /* Paste Panel */
 
@@ -3392,5 +3429,214 @@ h1 {
   .brain-breaks-fullscreen-mode .brain-breaks-exit-fullscreen {
     top: 0.75rem;
     right: 0.75rem;
+  }
+}
+/* ==========================================
+   CLASSROOM FULLSCREEN TOOL MODES
+========================================== */
+
+.random-number-card:fullscreen,
+.reward-wheel-card:fullscreen,
+.dice-roller-card:fullscreen,
+.noise-meter-card:fullscreen,
+.visual-schedule-card:fullscreen,
+.yes-no-card:fullscreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: none;
+  width: 100vw;
+  height: 100vh;
+  padding: clamp(1rem, 4vw, 4rem);
+  border-radius: 0;
+  overflow-y: auto;
+}
+
+.random-number-card:fullscreen .timer-note,
+.random-number-card:fullscreen .random-inputs,
+.random-number-card:fullscreen .random-repeat-toggle,
+.random-number-card:fullscreen .random-history-box,
+.reward-wheel-card:fullscreen .timer-note,
+.reward-wheel-card:fullscreen .reward-options-panel,
+.reward-wheel-card:fullscreen .reward-history-box,
+.dice-roller-card:fullscreen .timer-note,
+.dice-roller-card:fullscreen .dice-options,
+.dice-roller-card:fullscreen .dice-total-toggle,
+.noise-meter-card:fullscreen .timer-note,
+.noise-meter-card:fullscreen .noise-alert-toggle,
+.visual-schedule-card:fullscreen .timer-note,
+.visual-schedule-card:fullscreen .schedule-input-panel,
+.visual-schedule-card:fullscreen .schedule-preview-panel .tool-small-note,
+.yes-no-card:fullscreen .timer-note,
+.yes-no-card:fullscreen .yes-no-options,
+.yes-no-card:fullscreen .yes-no-history-box {
+  display: none;
+}
+
+.random-number-card:fullscreen .timer-actions,
+.reward-wheel-card:fullscreen .timer-actions,
+.dice-roller-card:fullscreen .timer-actions,
+.noise-meter-card:fullscreen .timer-actions,
+.visual-schedule-card:fullscreen .schedule-controls,
+.yes-no-card:fullscreen .timer-actions {
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.random-number-card:fullscreen .result-box,
+.dice-roller-card:fullscreen .result-box,
+.reward-wheel-card:fullscreen .reward-result-box,
+.yes-no-card:fullscreen .result-box {
+  margin-top: 0;
+}
+
+.random-number-card:fullscreen .result-box h2,
+.dice-roller-card:fullscreen .result-box h2,
+.reward-wheel-card:fullscreen .reward-result-box h2,
+.yes-no-card:fullscreen .result-box h2 {
+  font-size: clamp(1.75rem, 3vw, 3rem);
+}
+
+.random-number-card:fullscreen .random-result {
+  min-height: clamp(220px, 42vh, 520px);
+  font-size: clamp(7rem, 24vw, 18rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.random-number-card:fullscreen .random-range {
+  font-size: clamp(1.25rem, 2.2vw, 2rem);
+}
+
+.yes-no-card:fullscreen .yes-no-result {
+  min-height: clamp(260px, 48vh, 620px);
+  font-size: clamp(5rem, 14vw, 13rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-wrap: anywhere;
+}
+
+.dice-roller-card:fullscreen .dice-results {
+  min-height: clamp(260px, 48vh, 620px);
+  padding: clamp(1.5rem, 4vw, 4rem);
+}
+
+.dice-roller-card:fullscreen .dice-result-list {
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.dice-roller-card:fullscreen .dice-result-item {
+  min-width: clamp(130px, 18vw, 240px);
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  font-size: clamp(4rem, 10vw, 9rem);
+}
+
+.dice-roller-card:fullscreen .dice-total {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+}
+
+.reward-wheel-card:fullscreen .reward-wheel-layout {
+  grid-template-columns: 1fr;
+  align-items: center;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.reward-wheel-card:fullscreen .reward-wheel-area {
+  min-height: clamp(360px, 52vh, 680px);
+}
+
+.reward-wheel-card:fullscreen .reward-wheel {
+  width: clamp(320px, 38vw, 560px);
+  height: clamp(320px, 38vw, 560px);
+}
+
+.reward-wheel-card:fullscreen .reward-result {
+  min-height: clamp(160px, 28vh, 360px);
+  font-size: clamp(4rem, 10vw, 9rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-wrap: anywhere;
+}
+
+.noise-meter-card:fullscreen .noise-display {
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.noise-meter-card:fullscreen .noise-emoji {
+  font-size: clamp(6rem, 16vw, 14rem);
+}
+
+.noise-meter-card:fullscreen .noise-status {
+  font-size: clamp(3rem, 8vw, 7rem);
+}
+
+.noise-meter-card:fullscreen .noise-value {
+  font-size: clamp(5rem, 16vw, 14rem);
+}
+
+.noise-meter-card:fullscreen .noise-meter-bar-container {
+  height: clamp(44px, 8vw, 90px);
+}
+
+.noise-meter-card:fullscreen .noise-legend {
+  font-size: clamp(1.1rem, 2vw, 1.75rem);
+}
+
+.visual-schedule-card:fullscreen {
+  justify-content: flex-start;
+}
+
+.visual-schedule-card:fullscreen .visual-schedule-layout {
+  grid-template-columns: 1fr;
+  margin-bottom: 1.5rem;
+}
+
+.visual-schedule-card:fullscreen .schedule-preview-panel {
+  align-items: center;
+}
+
+.visual-schedule-card:fullscreen .current-activity-box {
+  width: min(1100px, 100%);
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.visual-schedule-card:fullscreen .visual-schedule-list {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  width: 100%;
+  margin-top: 0;
+}
+
+.visual-schedule-card:fullscreen .visual-schedule-item {
+  padding: clamp(1rem, 2vw, 2rem);
+}
+
+.visual-schedule-card:fullscreen .schedule-card-icon {
+  font-size: clamp(3rem, 6vw, 6rem);
+}
+
+.visual-schedule-card:fullscreen .schedule-card-title {
+  font-size: clamp(1.2rem, 2vw, 2rem);
+}
+
+.visual-schedule-card:fullscreen .schedule-card-time {
+  font-size: clamp(1rem, 1.6vw, 1.5rem);
+}
+
+@media (max-width: 760px) {
+  .reward-wheel-card:fullscreen .reward-wheel-area {
+    min-height: 320px;
+  }
+
+  .reward-wheel-card:fullscreen .reward-result {
+    min-height: 140px;
+  }
+
+  .visual-schedule-card:fullscreen .visual-schedule-list {
+    grid-template-columns: 1fr;
   }
 }

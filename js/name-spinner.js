@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const cancelPasteBtn = document.getElementById("cancelPasteBtn");
 
   const spinBtn = document.getElementById("spinBtn");
+  const fullscreenBtn = document.getElementById("fullscreenNameSpinnerBtn");
   const clearBtn = document.getElementById("clearBtn");
   const result = document.getElementById("result");
   const studentCountBadge = document.getElementById("studentCountBadge");
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     !importNamesBtn ||
     !cancelPasteBtn ||
     !spinBtn ||
+    !fullscreenBtn ||
     !clearBtn ||
     !result ||
     !studentCountBadge ||
@@ -47,6 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
         empty: "Agrega al menos un nombre.",
         ready: "Listo para girar...",
         choosing: "Eligiendo...",
+        enterFullscreen: "Pantalla Completa",
+        exitFullscreen: "Salir de Pantalla Completa",
         recentPicks: "Seleccionados Recientes"
       }
     : {
@@ -58,6 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
         empty: "Please enter at least one name.",
         ready: "Ready to spin...",
         choosing: "Choosing...",
+        enterFullscreen: "Fullscreen Mode",
+        exitFullscreen: "Exit Fullscreen",
         recentPicks: "Recent Picks"
       };
 
@@ -265,6 +271,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 75);
   }
 
+  function isFullscreenActive() {
+    return document.fullscreenElement === card;
+  }
+
+  function updateFullscreenButton() {
+    fullscreenBtn.textContent = isFullscreenActive()
+      ? text.exitFullscreen
+      : text.enterFullscreen;
+  }
+
+  function toggleFullscreen() {
+    if (!document.fullscreenEnabled) {
+      fullscreenBtn.hidden = true;
+      return;
+    }
+
+    if (isFullscreenActive()) {
+      document.exitFullscreen?.();
+      return;
+    }
+
+    card.requestFullscreen?.();
+  }
   function clearAll() {
     if (spinning) {
       return;
@@ -379,7 +408,10 @@ document.addEventListener("DOMContentLoaded", function () {
   importNamesBtn.addEventListener("click", importNames);
 
   spinBtn.addEventListener("click", spin);
+  fullscreenBtn.addEventListener("click", toggleFullscreen);
   clearBtn.addEventListener("click", clearAll);
+
+  document.addEventListener("fullscreenchange", updateFullscreenButton);
 
   document.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
@@ -399,5 +431,11 @@ document.addEventListener("DOMContentLoaded", function () {
   renumberRows();
   ensureEmptyRowAtEnd();
   updateStudentCount();
+  updateFullscreenButton();
+
+  if (!document.fullscreenEnabled) {
+    fullscreenBtn.hidden = true;
+  }
+
   showMessage(text.ready);
 });
