@@ -226,7 +226,7 @@
             }
           }
         );
-        return finishAuthRedirect(authState).then(() => authState.client.auth.getSession());
+        return authState.client.auth.getSession();
       })
       .then(async ({ data }) => {
         authState.loading = false;
