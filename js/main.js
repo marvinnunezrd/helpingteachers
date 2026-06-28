@@ -206,14 +206,16 @@
           config.supabaseAnonKey,
           {
             auth: {
+              storageKey: "helping-teachers-auth-session",
               persistSession: true,
               autoRefreshToken: true,
-              detectSessionInUrl: true
+              detectSessionInUrl: true,
+              flowType: "pkce"
             }
           }
         );
 
-        return authState.client.auth.getSession();
+        return finishAuthRedirect(authState).then(() => authState.client.auth.getSession());
       })
       .then(async ({ data }) => {
         authState.loading = false;
@@ -439,6 +441,24 @@
     };
   }
 
+  async function finishAuthRedirect(authState) {
+    if (!authState.client) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
+
+    if (!code) return;
+
+    try {
+      await authState.client.auth.exchangeCodeForSession(code);
+      params.delete("code");
+      const cleanQuery = params.toString();
+      const cleanUrl = window.location.pathname + (cleanQuery ? `?${cleanQuery}` : "") + window.location.hash;
+      window.history.replaceState({}, document.title, cleanUrl);
+    } catch (error) {
+      // Supabase may have already processed the URL. getSession still runs next.
+    }
+  }
   function getRedirectUrl(config) {
     if (config.redirectTo) return config.redirectTo;
     return window.location.origin + window.location.pathname;
