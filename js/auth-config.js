@@ -4,7 +4,7 @@ window.HELPING_TEACHERS_AUTH = {
   supabaseAnonKey: "sb_publishable_q68TndbBNpmbDv5KFhXBlg_q_VJhaTw",
   redirectTo: window.location.origin + window.location.pathname,
   providers: {
-    google: false,
-    microsoft: false
+    google: true,
+    microsoft: true
   }
 };

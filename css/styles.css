@@ -351,6 +351,134 @@ a { color: inherit; text-decoration: none; }
   margin-top: 1rem;
 }
 
+/* Provider buttons with icon */
+.btn-provider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.btn-provider svg {
+  flex-shrink: 0;
+}
+
+/* "or" divider */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.1rem 0 0.5rem;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+/* Sign in / Create account tabs */
+.auth-tabs {
+  display: flex;
+  gap: 0;
+  margin: 0.75rem 0 0;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.auth-tab-btn {
+  flex: 1;
+  padding: 0.6rem 0.5rem;
+  border: 0;
+  background: transparent;
+  color: #64748b;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.auth-tab-btn.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+.auth-tab-btn:not(.active):hover {
+  background: #f1f5f9;
+}
+
+/* Form sections (sign in / sign up / forgot) */
+.auth-form-section {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
+}
+.auth-form-section[hidden] {
+  display: none;
+}
+
+/* Stacked label + input */
+.auth-input-group {
+  display: grid;
+  gap: 0.35rem;
+}
+.auth-input-group label {
+  color: var(--text-primary);
+  font-weight: 900;
+  font-size: 0.95rem;
+}
+.auth-input-group input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  border: 2px solid #dbeafe;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.15s, outline 0.15s;
+}
+.auth-input-group input:focus {
+  outline: 4px solid #bfdbfe;
+  border-color: #2563eb;
+}
+
+/* Forgot password help text */
+.auth-forgot-help {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Small text links (Forgot password / Back to sign in) */
+.auth-link-row {
+  text-align: center;
+}
+.auth-text-link {
+  border: 0;
+  background: none;
+  color: #2563eb;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0;
+}
+.auth-text-link:hover {
+  color: #1d4ed8;
+}
+
+/* Message color states */
+.auth-message-success { color: #15803d; }
+.auth-message-error   { color: #dc2626; }
+
+/* Hide modal intro when signed in (set by JS) */
+.auth-intro[hidden] { display: none; }
+
 @media (max-width: 720px) {
   .nav-actions {
     flex-wrap: wrap;
@@ -366,10 +494,6 @@ a { color: inherit; text-decoration: none; }
   .auth-dialog {
     max-height: calc(100vh - 1.5rem);
     padding: 1.35rem;
-  }
-
-  .auth-email-row {
-    grid-template-columns: 1fr;
   }
 }
 
