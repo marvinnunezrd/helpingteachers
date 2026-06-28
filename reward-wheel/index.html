@@ -60,7 +60,7 @@
     <section class="timer-section container">
       <div class="timer-card reward-wheel-card" data-ready-message="Ready to spin..."
         data-spinning-message="Spinning..." data-empty-options="Please add at least two rewards."
-        data-result-label="Winner" data-history-label="History" data-empty-history="No rewards picked yet.">
+        data-result-label="Winner" data-history-label="History" data-empty-history="No rewards picked yet." data-sync-signed-out="Sign in to save your rewards." data-sync-ready="Rewards ready to save." data-sync-loading="Loading saved rewards..." data-sync-loaded="Saved rewards loaded." data-sync-saving="Saving rewards..." data-sync-saved="Rewards saved." data-sync-error="Cloud save is not available right now. Your rewards are still available on this screen.">
         <div class="reward-wheel-layout">
           <div class="reward-wheel-area">
             <div class="wheel-pointer" aria-hidden="true"></div>
@@ -84,6 +84,8 @@ Teacher helper
 Pick a game
 Free draw time</textarea>
 
+            <p class="tool-small-note reward-sync-status" id="rewardSyncStatus" aria-live="polite"></p>
+
             <p class="tool-small-note">
               Write one reward per line.
             </p>
@@ -95,6 +97,10 @@ Free draw time</textarea>
             Spin
           </button>
 
+
+          <button type="button" class="btn btn-light" id="saveRewardsBtn">
+            Save rewards
+          </button>
           <button type="button" class="btn btn-secondary" id="resetRewardBtn">
             Reset
           </button>

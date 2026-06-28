@@ -34,7 +34,40 @@ document.addEventListener("DOMContentLoaded", () => {
   let stream = null;
   let isMonitoring = false;
   let lastAlertTime = 0;
+  const NOISE_STORAGE_KEY = "helpingTeachers.noiseMeter.settings";
 
+
+  function getNoiseSettings() {
+    return { alertEnabled: Boolean(alertToggle && alertToggle.checked) };
+  }
+
+  function applyNoiseSettings(settings) {
+    if (!settings || !alertToggle) return false;
+    alertToggle.checked = Boolean(settings.alertEnabled);
+    return true;
+  }
+
+  function saveNoiseSettings() {
+    const settings = getNoiseSettings();
+    localStorage.setItem(NOISE_STORAGE_KEY, JSON.stringify(settings));
+    if (window.HelpingTeachersAuth && window.HelpingTeachersAuth.isSignedIn()) {
+      window.HelpingTeachersAuth.saveToolSetting("noise-meter", "settings", settings);
+    }
+  }
+
+  function loadLocalNoiseSettings() {
+    try {
+      return JSON.parse(localStorage.getItem(NOISE_STORAGE_KEY));
+    } catch (error) {
+      return null;
+    }
+  }
+
+  async function loadCloudNoiseSettings() {
+    if (!window.HelpingTeachersAuth || !window.HelpingTeachersAuth.isSignedIn()) return;
+    const { data, error } = await window.HelpingTeachersAuth.getToolSetting("noise-meter", "settings");
+    if (!error && data && applyNoiseSettings(data)) localStorage.setItem(NOISE_STORAGE_KEY, JSON.stringify(data));
+  }
   function setStatus(emoji, status, value, levelClass) {
     noiseEmoji.textContent = emoji;
     noiseStatus.textContent = status;
@@ -183,6 +216,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     toggleBtn.textContent = START_MESSAGE;
     setStatus("🎤", READY_MESSAGE, 0, "");
+  }
+
+  if (alertToggle) alertToggle.addEventListener("change", saveNoiseSettings);
+  applyNoiseSettings(loadLocalNoiseSettings());
+  if (window.HelpingTeachersAuth && typeof window.HelpingTeachersAuth.onReady === "function") {
+    window.HelpingTeachersAuth.onReady(loadCloudNoiseSettings);
   }
 
   toggleBtn.addEventListener("click", () => {

@@ -245,6 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentCategory = "all";
   let currentBrainBreak = brainBreaks[0];
   let favorites = loadFavorites();
+  let cloudFavoritesLoaded = false;
 
   function getFilteredBrainBreaks() {
     if (currentCategory === "all") {
@@ -335,6 +336,12 @@ document.addEventListener("DOMContentLoaded", () => {
       storageKey,
       JSON.stringify(favorites)
     );
+
+    if (window.HelpingTeachersAuth && window.HelpingTeachersAuth.isSignedIn()) {
+      window.HelpingTeachersAuth.saveToolSetting("brain-breaks", isSpanish ? "favorites-es" : "favorites-en", {
+        favorites
+      });
+    }
   }
 
   function isFavorite(id) {
@@ -435,6 +442,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
+  async function loadCloudFavorites() {
+    if (!window.HelpingTeachersAuth || !window.HelpingTeachersAuth.isSignedIn() || cloudFavoritesLoaded) return;
+    cloudFavoritesLoaded = true;
+    const { data, error } = await window.HelpingTeachersAuth.getToolSetting("brain-breaks", isSpanish ? "favorites-es" : "favorites-en");
+    if (!error && data && Array.isArray(data.favorites)) {
+      favorites = data.favorites;
+      saveFavorites();
+      renderFavorites();
+    }
+  }
   function enterFullscreenMode() {
     card.classList.add("brain-breaks-fullscreen-mode");
     document.body.classList.add("brain-breaks-body-fullscreen");
@@ -508,6 +526,10 @@ document.addEventListener("DOMContentLoaded", () => {
       saveCurrentFavorite();
     }
   });
+
+  if (window.HelpingTeachersAuth && typeof window.HelpingTeachersAuth.onReady === "function") {
+    window.HelpingTeachersAuth.onReady(loadCloudFavorites);
+  }
 
   renderBrainBreak(currentBrainBreak);
   renderFavorites();

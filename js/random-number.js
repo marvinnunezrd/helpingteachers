@@ -45,7 +45,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let history = [];
   let usedNumbers = new Set();
+  const RANDOM_STORAGE_KEY = "helpingTeachers.randomNumber.settings";
+  let randomSaveTimer = null;
 
+
+  function getRandomSettings() {
+    return {
+      min: minimumInput.value,
+      max: maximumInput.value,
+      excludeRepeats: Boolean(excludeRepeatsCheckbox && excludeRepeatsCheckbox.checked)
+    };
+  }
+
+  function applyRandomSettings(settings) {
+    if (!settings) return false;
+    if (settings.min !== undefined) minimumInput.value = settings.min;
+    if (settings.max !== undefined) maximumInput.value = settings.max;
+    if (excludeRepeatsCheckbox && settings.excludeRepeats !== undefined) excludeRepeatsCheckbox.checked = Boolean(settings.excludeRepeats);
+    updateRangeLabel();
+    return true;
+  }
+
+  function saveRandomSettings() {
+    const settings = getRandomSettings();
+    localStorage.setItem(RANDOM_STORAGE_KEY, JSON.stringify(settings));
+    window.clearTimeout(randomSaveTimer);
+    randomSaveTimer = window.setTimeout(() => {
+      if (window.HelpingTeachersAuth && window.HelpingTeachersAuth.isSignedIn()) {
+        window.HelpingTeachersAuth.saveToolSetting("random-number", "settings", settings);
+      }
+    }, 700);
+  }
+
+  function loadLocalRandomSettings() {
+    try {
+      return JSON.parse(localStorage.getItem(RANDOM_STORAGE_KEY));
+    } catch (error) {
+      return null;
+    }
+  }
+
+  async function loadCloudRandomSettings() {
+    if (!window.HelpingTeachersAuth || !window.HelpingTeachersAuth.isSignedIn()) return;
+    const { data, error } = await window.HelpingTeachersAuth.getToolSetting("random-number", "settings");
+    if (!error && data && applyRandomSettings(data)) localStorage.setItem(RANDOM_STORAGE_KEY, JSON.stringify(data));
+  }
   function updateRangeLabel() {
     const min = minimumInput.value;
     const max = maximumInput.value;
@@ -154,9 +198,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   clearBtn.addEventListener("click", clearAll);
 
-  minimumInput.addEventListener("input", updateRangeLabel);
-  maximumInput.addEventListener("input", updateRangeLabel);
+  minimumInput.addEventListener("input", () => {
+    updateRangeLabel();
+    saveRandomSettings();
+  });
+  maximumInput.addEventListener("input", () => {
+    updateRangeLabel();
+    saveRandomSettings();
+  });
+  if (excludeRepeatsCheckbox) excludeRepeatsCheckbox.addEventListener("change", saveRandomSettings);
 
+  applyRandomSettings(loadLocalRandomSettings());
+  if (window.HelpingTeachersAuth && typeof window.HelpingTeachersAuth.onReady === "function") {
+    window.HelpingTeachersAuth.onReady(loadCloudRandomSettings);
+  }
   updateRangeLabel();
   renderHistory();
 });

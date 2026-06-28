@@ -8,16 +8,67 @@ const fullscreenBtn = document.getElementById("fullscreenBtn");
 const timerCard = document.getElementById("timerCard");
 const presetButtons = document.querySelectorAll("[data-minutes]");
 
+const TIMER_STORAGE_KEY = "helpingTeachers.timer.settings";
+
 let totalSeconds = 300;
 let remainingSeconds = 300;
 let timerInterval = null;
 let isRunning = false;
+let timerSaveTimer = null;
 
 function formatTime(seconds) {
   const mins = Math.floor(seconds / 60);
   const secs = seconds % 60;
 
   return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+}
+
+function getTimerSettings() {
+  return {
+    minutes: Number(minutesInput.value) || 0,
+    seconds: Number(secondsInput.value) || 0
+  };
+}
+
+function saveTimerSettings() {
+  const settings = getTimerSettings();
+  localStorage.setItem(TIMER_STORAGE_KEY, JSON.stringify(settings));
+
+  window.clearTimeout(timerSaveTimer);
+  timerSaveTimer = window.setTimeout(() => {
+    if (window.HelpingTeachersAuth && window.HelpingTeachersAuth.isSignedIn()) {
+      window.HelpingTeachersAuth.saveToolSetting("timer", "settings", settings);
+    }
+  }, 700);
+}
+
+function applyTimerSettings(settings) {
+  if (!settings) return false;
+
+  minutesInput.value = Math.max(0, Number(settings.minutes) || 0);
+  secondsInput.value = Math.min(59, Math.max(0, Number(settings.seconds) || 0));
+
+  totalSeconds = (Number(minutesInput.value) || 0) * 60 + (Number(secondsInput.value) || 0);
+  remainingSeconds = totalSeconds;
+  updateDisplay();
+  return true;
+}
+
+function loadLocalTimerSettings() {
+  try {
+    return JSON.parse(localStorage.getItem(TIMER_STORAGE_KEY));
+  } catch (error) {
+    return null;
+  }
+}
+
+async function loadCloudTimerSettings() {
+  if (!window.HelpingTeachersAuth || !window.HelpingTeachersAuth.isSignedIn()) return;
+
+  const { data, error } = await window.HelpingTeachersAuth.getToolSetting("timer", "settings");
+  if (!error && data && applyTimerSettings(data)) {
+    localStorage.setItem(TIMER_STORAGE_KEY, JSON.stringify(data));
+  }
 }
 
 function updateDisplay() {
@@ -40,6 +91,7 @@ function readInputs() {
   remainingSeconds = totalSeconds;
 
   updateDisplay();
+  saveTimerSettings();
 }
 
 function startTimer() {
@@ -90,6 +142,7 @@ function setPreset(minutes) {
   remainingSeconds = totalSeconds;
 
   updateDisplay();
+  saveTimerSettings();
 }
 
 function playFinishSound() {
@@ -137,4 +190,8 @@ presetButtons.forEach((button) => {
   });
 });
 
+applyTimerSettings(loadLocalTimerSettings());
+if (window.HelpingTeachersAuth && typeof window.HelpingTeachersAuth.onReady === "function") {
+  window.HelpingTeachersAuth.onReady(loadCloudTimerSettings);
+}
 updateDisplay();

@@ -7,8 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const optionsTextarea = document.getElementById("rewardOptions");
   const spinBtn = document.getElementById("spinRewardBtn");
   const resetBtn = document.getElementById("resetRewardBtn");
+  const saveBtn = document.getElementById("saveRewardsBtn");
   const resultEl = document.getElementById("rewardResult");
   const historyEl = document.getElementById("rewardHistory");
+  const syncStatusEl = document.getElementById("rewardSyncStatus");
 
   const READY_MESSAGE = card.dataset.readyMessage || "Ready to spin...";
   const SPINNING_MESSAGE = card.dataset.spinningMessage || "Spinning...";
@@ -16,6 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
     card.dataset.emptyOptions || "Please add at least two rewards.";
   const EMPTY_HISTORY =
     card.dataset.emptyHistory || "No rewards picked yet.";
+  const SYNC_SIGNED_OUT = card.dataset.syncSignedOut || "Sign in to save your rewards.";
+  const SYNC_READY = card.dataset.syncReady || "Rewards ready to save.";
+  const SYNC_LOADING = card.dataset.syncLoading || "Loading saved rewards...";
+  const SYNC_LOADED = card.dataset.syncLoaded || "Saved rewards loaded.";
+  const SYNC_SAVING = card.dataset.syncSaving || "Saving rewards...";
+  const SYNC_SAVED = card.dataset.syncSaved || "Rewards saved.";
+  const SYNC_ERROR = card.dataset.syncError || "We could not save rewards.";
+  const LOCAL_REWARDS_KEY = "helpingTeachers.rewardWheel.rewards";
 
   const COLORS = [
     "#2563EB",
@@ -34,6 +44,36 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentRotation = 0;
   let history = [];
   let isSpinning = false;
+  let authContext = null;
+  let loadedSavedRewards = false;
+
+  function setSyncStatus(message) {
+    if (syncStatusEl) syncStatusEl.textContent = message;
+  }
+
+  function setSaveEnabled(enabled) {
+    if (saveBtn) saveBtn.disabled = !enabled;
+  }
+
+  function readLocalRewards() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(LOCAL_REWARDS_KEY));
+      return Array.isArray(saved) ? saved : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function saveLocalRewards(rewards) {
+    localStorage.setItem(LOCAL_REWARDS_KEY, JSON.stringify(rewards));
+  }
+
+  function applyRewards(rewards) {
+    if (!Array.isArray(rewards) || rewards.length === 0) return false;
+    optionsTextarea.value = rewards.join("\n");
+    resetWheel();
+    return true;
+  }
 
   function getRewards() {
     return optionsTextarea.value
@@ -306,15 +346,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     rewards.forEach((reward, index) => {
       const label = document.createElement("div");
-      const labelAngle = index * angle + angle / 2;
+      const labelAngle = index * angle + angle / 2 - 90;
+      const labelRadians = labelAngle * Math.PI / 180;
+      const labelRadius = total <= 6 ? 32 : 34;
       const icon = getRewardIcon(reward);
 
       label.className = "wheel-label";
-      label.style.transform = `
-        rotate(${labelAngle}deg)
-        translateY(-112px)
-        rotate(${-labelAngle}deg)
-      `;
+      label.style.left = `${50 + Math.cos(labelRadians) * labelRadius}%`;
+      label.style.top = `${50 + Math.sin(labelRadians) * labelRadius}%`;
 
       label.innerHTML = `
         <span class="wheel-label-icon">${icon}</span>
@@ -362,6 +401,66 @@ document.addEventListener("DOMContentLoaded", () => {
     spinBtn.disabled = state;
   }
 
+  async function loadSavedRewards() {
+    if (!window.HelpingTeachersAuth || !authContext || !authContext.signedIn || loadedSavedRewards) return;
+
+    setSyncStatus(SYNC_LOADING);
+    const { data, error } = await window.HelpingTeachersAuth.getToolSetting("reward-wheel", "rewards");
+
+    loadedSavedRewards = true;
+
+    if (error) {
+      setSyncStatus(SYNC_READY);
+      return;
+    }
+
+    if (data && Array.isArray(data.rewards) && data.rewards.length > 0) {
+      optionsTextarea.value = data.rewards.join("\n");
+      resetWheel();
+      setSyncStatus(SYNC_LOADED);
+      return;
+    }
+
+    setSyncStatus(SYNC_READY);
+  }
+
+  async function saveRewards() {
+    const rewards = getRewards();
+    saveLocalRewards(rewards);
+
+    if (!window.HelpingTeachersAuth || !authContext || !authContext.signedIn) {
+      setSyncStatus(SYNC_SIGNED_OUT);
+      return;
+    }
+
+    const originalText = saveBtn ? saveBtn.textContent : "";
+    setSaveEnabled(false);
+    if (saveBtn) saveBtn.textContent = SYNC_SAVING;
+    setSyncStatus(SYNC_SAVING);
+
+    const { error } = await window.HelpingTeachersAuth.saveToolSetting("reward-wheel", "rewards", {
+      rewards,
+      updatedAt: new Date().toISOString()
+    });
+
+    setSyncStatus(error ? SYNC_ERROR : SYNC_SAVED);
+    if (saveBtn) saveBtn.textContent = originalText;
+    setSaveEnabled(true);
+  }
+
+  function handleAuthContext(context) {
+    authContext = context;
+    loadedSavedRewards = false;
+
+    if (!context || !context.signedIn) {
+      setSaveEnabled(false);
+      setSyncStatus(SYNC_SIGNED_OUT);
+      return;
+    }
+
+    setSaveEnabled(true);
+    loadSavedRewards();
+  }
   function spinWheel() {
     if (isSpinning) return;
 
@@ -421,10 +520,22 @@ document.addEventListener("DOMContentLoaded", () => {
     currentRotation = 0;
     wheel.style.transform = "rotate(0deg)";
     renderWheel();
+    saveLocalRewards(getRewards());
+    setSyncStatus(authContext && authContext.signedIn ? SYNC_READY : SYNC_SIGNED_OUT);
   });
 
   spinBtn.addEventListener("click", spinWheel);
+  if (saveBtn) saveBtn.addEventListener("click", saveRewards);
   resetBtn.addEventListener("click", resetWheel);
+
+  applyRewards(readLocalRewards());
+
+  if (window.HelpingTeachersAuth && typeof window.HelpingTeachersAuth.onReady === "function") {
+    window.HelpingTeachersAuth.onReady(handleAuthContext);
+  } else {
+    setSaveEnabled(false);
+    setSyncStatus(SYNC_SIGNED_OUT);
+  }
 
   renderWheel();
   renderHistory();

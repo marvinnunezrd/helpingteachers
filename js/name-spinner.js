@@ -69,6 +69,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let spinning = false;
   let recentPicks = [];
+  const CLASS_LIST_STORAGE_KEY = isSpanish ? "helpingTeachers.classList.es" : "helpingTeachers.classList.en";
+  const NAME_SPINNER_STORAGE_KEY = isSpanish ? "helpingTeachers.nameSpinner.es" : "helpingTeachers.nameSpinner.en";
+  let saveTimer = null;
+  let cloudLoaded = false;
 
   function escapeAttribute(value) {
     return String(value)
@@ -153,6 +157,45 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
+
+  function saveNameList() {
+    const state = { names: getNames() };
+    localStorage.setItem(CLASS_LIST_STORAGE_KEY, JSON.stringify(state));
+    localStorage.setItem(NAME_SPINNER_STORAGE_KEY, JSON.stringify(state));
+    window.clearTimeout(saveTimer);
+    saveTimer = window.setTimeout(() => {
+      if (window.HelpingTeachersAuth && window.HelpingTeachersAuth.isSignedIn()) {
+        window.HelpingTeachersAuth.saveToolSetting("class-list", isSpanish ? "names-es" : "names-en", state);
+      }
+    }, 700);
+  }
+
+  function applyNameList(state) {
+    if (!state || !Array.isArray(state.names) || state.names.length === 0) return false;
+    rowsContainer.innerHTML = "";
+    state.names.forEach(name => addRow(name));
+    ensureEmptyRowAtEnd();
+    updateStudentCount();
+    return true;
+  }
+
+  function loadLocalNameList() {
+    try {
+      return JSON.parse(localStorage.getItem(CLASS_LIST_STORAGE_KEY)) || JSON.parse(localStorage.getItem(NAME_SPINNER_STORAGE_KEY));
+    } catch (error) {
+      return null;
+    }
+  }
+
+  async function loadCloudNameList() {
+    if (!window.HelpingTeachersAuth || !window.HelpingTeachersAuth.isSignedIn() || cloudLoaded) return;
+    cloudLoaded = true;
+    const { data, error } = await window.HelpingTeachersAuth.getToolSetting("class-list", isSpanish ? "names-es" : "names-en");
+    if (!error && data && applyNameList(data)) {
+      localStorage.setItem(CLASS_LIST_STORAGE_KEY, JSON.stringify(data));
+      localStorage.setItem(NAME_SPINNER_STORAGE_KEY, JSON.stringify(data));
+    }
+  }
   function updateStudentCount() {
     const count = getNames().length;
 
@@ -320,6 +363,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (firstInput) {
       firstInput.focus();
     }
+
+    saveNameList();
   }
 
   function importNames() {
@@ -351,12 +396,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     result.classList.remove("winner");
     showMessage(text.ready);
+    saveNameList();
   }
 
   rowsContainer.addEventListener("input", function (event) {
     if (event.target.classList.contains("student-name-input")) {
       ensureEmptyRowAtEnd();
       updateStudentCount();
+      saveNameList();
     }
   });
 
@@ -380,6 +427,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ensureEmptyRowAtEnd();
     renumberRows();
     updateStudentCount();
+    saveNameList();
   });
 
   addStudentBtn.addEventListener("click", function () {
@@ -428,6 +476,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  applyNameList(loadLocalNameList());
+  if (window.HelpingTeachersAuth && typeof window.HelpingTeachersAuth.onReady === "function") {
+    window.HelpingTeachersAuth.onReady(loadCloudNameList);
+  }
   renumberRows();
   ensureEmptyRowAtEnd();
   updateStudentCount();

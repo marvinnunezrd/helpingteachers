@@ -60,7 +60,7 @@
     <section class="timer-section container">
       <div class="timer-card reward-wheel-card" data-ready-message="Lista para girar..."
         data-spinning-message="Girando..." data-empty-options="Agrega al menos dos premios." data-result-label="Ganador"
-        data-history-label="Historial" data-empty-history="Aún no se han seleccionado premios.">
+        data-history-label="Historial" data-empty-history="Aún no se han seleccionado premios." data-sync-signed-out="Inicia sesiÃ³n para guardar tus premios." data-sync-ready="Premios listos para guardar." data-sync-loading="Cargando premios guardados..." data-sync-loaded="Premios guardados cargados." data-sync-saving="Guardando premios..." data-sync-saved="Premios guardados." data-sync-error="No pudimos guardar en la nube ahora mismo. Tus premios siguen disponibles en esta pantalla.">
         <div class="reward-wheel-layout">
           <div class="reward-wheel-area">
             <div class="wheel-pointer" aria-hidden="true"></div>
@@ -84,6 +84,8 @@ Ayudante del maestro
 Elegir un juego
 Tiempo para dibujar</textarea>
 
+            <p class="tool-small-note reward-sync-status" id="rewardSyncStatus" aria-live="polite"></p>
+
             <p class="tool-small-note">
               Escribe un premio por línea.
             </p>
@@ -95,6 +97,10 @@ Tiempo para dibujar</textarea>
             Girar
           </button>
 
+
+          <button type="button" class="btn btn-light" id="saveRewardsBtn">
+            Guardar premios
+          </button>
           <button type="button" class="btn btn-secondary" id="resetRewardBtn">
             Reiniciar
           </button>

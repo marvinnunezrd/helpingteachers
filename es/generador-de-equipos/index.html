@@ -59,50 +59,148 @@
 
     <section class="timer-section container">
       <div class="timer-card team-generator-card">
-        <label for="names">
-          Nombres de estudiantes
-          <span class="label-helper">(uno por línea)</span>
-        </label>
+        <div class="name-spinner-layout team-generator-layout">
+          <div class="name-spinner-builder-panel">
+            <div class="name-spinner-header">
+              <div>
+                <h2>Lista de Clase</h2>
 
-        <textarea id="names" rows="5" placeholder="Emma&#10;Liam&#10;Olivia&#10;Noah&#10;Sophia" autocomplete="off"
-          spellcheck="false" data-empty-message="Por favor ingresa al menos dos nombres."
-          data-ready-message="Los equipos aparecerán aquí..."></textarea>
+                <p class="tool-small-note">
+                  Edita estudiantes uno por uno o pega una lista completa de tu clase.
+                </p>
+                <p class="student-privacy-note">
+                  Nota de privacidad: no escribas nombres completos de estudiantes. Usa nombres de pila, apodos o iniciales. Si dos estudiantes tienen el mismo nombre, agrega un distintivo como la inicial del segundo nombre o del apellido.
+                </p>
+              </div>
+            </div>
 
-        <div class="team-options">
-          <label for="teamCount">
-            Cantidad de equipos
-          </label>
+            <div class="name-list-table" aria-label="Lista de estudiantes">
+              <div class="name-list-table-header">
+                <span>Nombre del Estudiante</span>
+                <span></span>
+              </div>
 
-          <select id="teamCount">
-            <option value="2">2 equipos</option>
-            <option value="3">3 equipos</option>
-            <option value="4">4 equipos</option>
-            <option value="5">5 equipos</option>
-            <option value="6">6 equipos</option>
-          </select>
-        </div>
+              <div id="teamNameRows" class="name-list-rows">
+                <div class="name-list-row">
+                  <input type="text" class="student-name-input" aria-label="Nombre del estudiante 1" value="Emma" placeholder="Nombre del estudiante" />
+                  <button type="button" class="student-remove-btn" aria-label="Eliminar estudiante">x</button>
+                </div>
+                <div class="name-list-row">
+                  <input type="text" class="student-name-input" aria-label="Nombre del estudiante 2" value="Liam" placeholder="Nombre del estudiante" />
+                  <button type="button" class="student-remove-btn" aria-label="Eliminar estudiante">x</button>
+                </div>
+                <div class="name-list-row">
+                  <input type="text" class="student-name-input" aria-label="Nombre del estudiante 3" value="Olivia" placeholder="Nombre del estudiante" />
+                  <button type="button" class="student-remove-btn" aria-label="Eliminar estudiante">x</button>
+                </div>
+                <div class="name-list-row">
+                  <input type="text" class="student-name-input" aria-label="Nombre del estudiante 4" value="Noah" placeholder="Nombre del estudiante" />
+                  <button type="button" class="student-remove-btn" aria-label="Eliminar estudiante">x</button>
+                </div>
+                <div class="name-list-row">
+                  <input type="text" class="student-name-input" aria-label="Nombre del estudiante 5" value="Sophia" placeholder="Nombre del estudiante" />
+                  <button type="button" class="student-remove-btn" aria-label="Eliminar estudiante">x</button>
+                </div>
+              </div>
+            </div>
 
-        <div class="timer-actions">
-          <button type="button" class="btn btn-primary" id="generateBtn">
-            👥 Generar equipos
-          </button>
+            <div class="name-spinner-actions">
+              <button type="button" class="btn btn-secondary" id="teamAddStudentBtn">
+                Agregar Estudiante
+              </button>
 
-          <button type="button" class="btn btn-secondary" id="clearBtn">
-            Limpiar
-          </button>
-        </div>
+              <button type="button" class="btn btn-light" id="teamPasteListToggleBtn">
+                Pegar Lista de Clase
+              </button>
 
-        <div class="result-box">
-          <h2>Equipos generados</h2>
+              <button type="button" class="btn btn-secondary" id="clearBtn">
+                Limpiar
+              </button>
+            </div>
 
-          <div id="result" class="team-results" aria-live="polite">
-            Los equipos aparecerán aquí...
+            <div class="paste-list-panel" id="teamPasteListPanel" hidden>
+              <label for="teamPasteNames">
+                Pega los nombres aqui
+              </label>
+
+              <textarea id="teamPasteNames" rows="5" placeholder="Emma&#10;Liam&#10;Olivia&#10;Noah&#10;Sophia" autocomplete="off" spellcheck="false"></textarea>
+
+              <div class="name-spinner-actions">
+                <button type="button" class="btn btn-primary" id="teamImportNamesBtn">
+                  Importar Nombres
+                </button>
+
+                <button type="button" class="btn btn-light" id="teamCancelPasteBtn">
+                  Cancelar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="name-spinner-result-panel">
+            <div class="name-spinner-status">
+              <span id="teamStudentCountBadge">5 Estudiantes</span>
+              <span>Equipos</span>
+            </div>
+
+            <div class="team-options">
+              <label for="teamCount">
+                Cantidad de equipos
+              </label>
+
+              <select id="teamCount">
+                <option value="2">2 equipos</option>
+              </select>
+              <p class="tool-small-note" id="teamCountHint">
+                Agrega al menos 3 estudiantes para activar los equipos.
+              </p>
+            </div>
+
+            <div class="team-options team-name-options">
+              <label for="teamNameMode">
+                Nombres de equipos
+              </label>
+
+              <select id="teamNameMode">
+                <option value="number">Numeros: Equipo 1, Equipo 2</option>
+                <option value="color">Colores: Rojo, Azul, Verde</option>
+                <option value="custom">Nombres personalizados</option>
+              </select>
+              <p class="tool-small-note">
+                Elige numeros, equipos por colores o escribe tus propios nombres. Los nombres personalizados se guardan para la proxima vez.
+              </p>
+            </div>
+
+            <div class="paste-list-panel custom-team-names-panel" id="customTeamNamesPanel" hidden>
+              <label for="customTeamNames">
+                Nombres personalizados
+              </label>
+
+              <textarea id="customTeamNames" rows="4" placeholder="Aguilas&#10;Delfines&#10;Estrellas&#10;Exploradores" autocomplete="off" spellcheck="false"></textarea>
+            </div>
+
+            <div class="timer-actions team-generator-actions">
+              <button type="button" class="btn btn-primary" id="generateBtn">
+                Generar equipos
+              </button>
+
+              <button type="button" class="btn btn-light" id="teamFullscreenBtn">
+                Pantalla Completa
+              </button>
+            </div>
+
+            <div class="result-box">
+              <h2>Equipos generados</h2>
+
+              <div id="result" class="team-results" aria-live="polite">
+                Los equipos apareceran aqui...
+              </div>
+            </div>
           </div>
         </div>
 
         <p class="timer-note">
-          Consejo: utiliza esta herramienta para crear grupos justos en proyectos,
-          centros de aprendizaje, juegos, lectura y actividades colaborativas.
+          Consejo: esta herramienta comparte la misma lista de clase con la Ruleta de Nombres. Mas adelante, los estudiantes ausentes se podran manejar por el dia sin borrarlos de la lista principal.
         </p>
       </div>
     </section>

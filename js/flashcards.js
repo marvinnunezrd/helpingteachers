@@ -68,6 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentIndex = 0;
   let showingFront = true;
   let currentMode = "presentation";
+  const FLASHCARDS_STORAGE_KEY = isSpanish ? "helpingTeachers.flashcards.es" : "helpingTeachers.flashcards.en";
+  let saveTimer = null;
+  let cloudLoaded = false;
 
   function escapeAttribute(value) {
     return String(value)
@@ -192,6 +195,64 @@ document.addEventListener("DOMContentLoaded", () => {
     return parsed;
   }
 
+
+  function getFlashcardsState() {
+    return {
+      category: categorySelect.value,
+      mode: currentMode,
+      rows: getRows()
+        .map(row => ({
+          front: row.querySelector(".flashcard-front-input").value.trim(),
+          back: row.querySelector(".flashcard-back-input").value.trim()
+        }))
+        .filter(card => card.front || card.back)
+    };
+  }
+
+  function applyFlashcardsState(state) {
+    if (!state || !Array.isArray(state.rows) || state.rows.length === 0) return false;
+
+    rowsContainer.innerHTML = "";
+    state.rows.forEach(card => addRow(card.front || "", card.back || ""));
+    ensureEmptyRowAtEnd();
+
+    if (state.category) categorySelect.value = state.category;
+    if (state.mode) currentMode = state.mode;
+
+    renumberRows();
+    generateCards();
+    setMode(currentMode);
+    return true;
+  }
+
+  function saveLocalState() {
+    localStorage.setItem(FLASHCARDS_STORAGE_KEY, JSON.stringify(getFlashcardsState()));
+  }
+
+  function scheduleSave() {
+    saveLocalState();
+    window.clearTimeout(saveTimer);
+    saveTimer = window.setTimeout(() => {
+      if (window.HelpingTeachersAuth && window.HelpingTeachersAuth.isSignedIn()) {
+        window.HelpingTeachersAuth.saveToolSetting("flashcards", "cards", getFlashcardsState());
+      }
+    }, 700);
+  }
+
+  function loadLocalState() {
+    try {
+      return JSON.parse(localStorage.getItem(FLASHCARDS_STORAGE_KEY));
+    } catch (error) {
+      return null;
+    }
+  }
+
+  async function loadCloudState() {
+    if (!window.HelpingTeachersAuth || !window.HelpingTeachersAuth.isSignedIn() || cloudLoaded) return;
+    cloudLoaded = true;
+    const { data, error } = await window.HelpingTeachersAuth.getToolSetting("flashcards", "cards");
+    if (!error && data && applyFlashcardsState(data)) saveLocalState();
+  }
   function updateCounter() {
     if (!cards.length) {
       counter.textContent = text.noCards;
@@ -398,6 +459,7 @@ document.addEventListener("DOMContentLoaded", () => {
       event.target.classList.contains("flashcard-back-input")
     ) {
       ensureEmptyRowAtEnd();
+      scheduleSave();
     }
   });
 
@@ -419,6 +481,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ensureEmptyRowAtEnd();
     renumberRows();
     generateCards();
+    scheduleSave();
   });
 
   addRowBtn.addEventListener("click", () => {
@@ -431,7 +494,10 @@ document.addEventListener("DOMContentLoaded", () => {
     firstInput.focus();
   });
 
-  generateBtn.addEventListener("click", generateCards);
+  generateBtn.addEventListener("click", () => {
+    generateCards();
+    scheduleSave();
+  });
 
   clearBtn.addEventListener("click", () => {
     clearRows();
@@ -460,10 +526,14 @@ document.addEventListener("DOMContentLoaded", () => {
   modeButtons.forEach(btn => {
     btn.addEventListener("click", () => {
       setMode(btn.dataset.mode);
+      scheduleSave();
     });
   });
 
-  categorySelect.addEventListener("change", updateCategory);
+  categorySelect.addEventListener("change", () => {
+    updateCategory();
+    scheduleSave();
+  });
 
   document.addEventListener("keydown", event => {
     if (event.key === "Escape") {
@@ -493,6 +563,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  applyFlashcardsState(loadLocalState());
+  if (window.HelpingTeachersAuth && typeof window.HelpingTeachersAuth.onReady === "function") {
+    window.HelpingTeachersAuth.onReady(loadCloudState);
+  }
   renumberRows();
   ensureEmptyRowAtEnd();
   generateCards();

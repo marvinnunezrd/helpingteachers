@@ -40,6 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let manualIndex = null;
   let autoTimer = null;
+  const VISUAL_SCHEDULE_STORAGE_KEY = document.documentElement.lang && document.documentElement.lang.toLowerCase().startsWith("es") ? "helpingTeachers.visualSchedule.es" : "helpingTeachers.visualSchedule.en";
+  let saveTimer = null;
+  let cloudLoaded = false;
 
   function normalizeText(text) {
     return text
@@ -578,6 +581,45 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCurrentActivity(activities, activeIndex);
   }
 
+
+  function saveLocalSchedule() {
+    localStorage.setItem(VISUAL_SCHEDULE_STORAGE_KEY, JSON.stringify({ activities: getActivities() }));
+  }
+
+  function scheduleSave() {
+    saveLocalSchedule();
+    window.clearTimeout(saveTimer);
+    saveTimer = window.setTimeout(() => {
+      if (window.HelpingTeachersAuth && window.HelpingTeachersAuth.isSignedIn()) {
+        window.HelpingTeachersAuth.saveToolSetting("visual-schedule", "activities", { activities: getActivities() });
+      }
+    }, 700);
+  }
+
+  function applyScheduleState(state) {
+    if (!state || !Array.isArray(state.activities) || state.activities.length === 0) return false;
+    rowsContainer.innerHTML = "";
+    state.activities.forEach(activity => rowsContainer.appendChild(createRow(activity.title || "", activity.time || "")));
+    ensureEmptyRow();
+    manualIndex = null;
+    renderSchedule();
+    return true;
+  }
+
+  function loadLocalSchedule() {
+    try {
+      return JSON.parse(localStorage.getItem(VISUAL_SCHEDULE_STORAGE_KEY));
+    } catch (error) {
+      return null;
+    }
+  }
+
+  async function loadCloudSchedule() {
+    if (!window.HelpingTeachersAuth || !window.HelpingTeachersAuth.isSignedIn() || cloudLoaded) return;
+    cloudLoaded = true;
+    const { data, error } = await window.HelpingTeachersAuth.getToolSetting("visual-schedule", "activities");
+    if (!error && data && applyScheduleState(data)) saveLocalSchedule();
+  }
   function removeRow(row) {
     const rows = rowsContainer.querySelectorAll(".schedule-row");
 
@@ -590,6 +632,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     manualIndex = null;
     renderSchedule();
+    scheduleSave();
   }
 
   function handleRowsInput(event) {
@@ -603,6 +646,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     manualIndex = null;
     renderSchedule();
+    scheduleSave();
   }
 
   function handleRowsClick(event) {
@@ -622,6 +666,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const activityInput = newRow.querySelector(".schedule-activity-input");
 
     activityInput.focus();
+    scheduleSave();
   }
 
   function goToPreviousActivity() {
@@ -673,5 +718,9 @@ document.addEventListener("DOMContentLoaded", () => {
     clearInterval(autoTimer);
   });
 
+  applyScheduleState(loadLocalSchedule());
+  if (window.HelpingTeachersAuth && typeof window.HelpingTeachersAuth.onReady === "function") {
+    window.HelpingTeachersAuth.onReady(loadCloudSchedule);
+  }
   renderSchedule();
 });
