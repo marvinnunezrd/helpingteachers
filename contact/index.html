@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact | Helping Teachers</title>
+  <meta name="description" content="Get in touch with the Helping Teachers team. Questions, feedback, or need help with a classroom tool? We're here.">
+  <meta name="theme-color" content="#2563EB">
+
+  <link rel="canonical" href="https://helpingteachers.io/contact/">
+  <link rel="icon" href="../assets/favicon/favicon.ico">
+  <link rel="stylesheet" href="../css/styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NGG1JCMT2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-NGG1JCMT2V');
+  </script>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html">
+        <img src="../assets/logo/helping-teachers-logo-horizontal.webp" alt="Helping Teachers logo">
+      </a>
+
+      <div class="nav-actions">
+        <a class="language-switch" href="../es/contacto/">Español</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="tool-page">
+    <div class="container">
+      <section class="tool-shell contact-shell">
+        <a class="back-link" href="../index.html">← Back to Dashboard</a>
+
+        <div class="contact-content">
+          <span class="eyebrow">📬 We're here to help</span>
+          <h1>Contact us</h1>
+          <p class="contact-intro">
+            Have a question, found a bug, or want to suggest a new tool? Send us a message and
+            we'll get back to you. We read every message.
+          </p>
+
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/mvzjqggd" method="POST">
+            <div class="contact-field">
+              <label for="contactName">Name</label>
+              <input type="text" id="contactName" name="name" placeholder="Your name" autocomplete="name" required>
+            </div>
+
+            <div class="contact-field">
+              <label for="contactEmail">Email</label>
+              <input type="email" id="contactEmail" name="email" placeholder="you@email.com" autocomplete="email" required>
+            </div>
+
+            <div class="contact-field">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" name="message" rows="6" placeholder="How can we help?" required></textarea>
+            </div>
+
+            <input type="hidden" name="_subject" value="New message from Helping Teachers">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+            <button type="submit" class="btn btn-primary contact-submit">Send message</button>
+
+            <p class="contact-status" id="contactStatus" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span data-year></span> Helping Teachers.</p>
+      <div class="footer-links">
+        <a href="../privacy/">Privacy</a>
+        <a href="../terms/">Terms</a>
+        <a href="../contact/">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/contact.js"></script>
+</body>
+
+</html>

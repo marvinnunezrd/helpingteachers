@@ -351,6 +351,77 @@ a { color: inherit; text-decoration: none; }
   margin-top: 1rem;
 }
 
+/* ── Contact page ───────────────────────────────────────────── */
+.contact-shell {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.contact-content h1 {
+  margin: 0.5rem 0 0.75rem;
+}
+
+.contact-intro {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0 0 2rem;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.contact-field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.contact-field label {
+  font-weight: 900;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.contact-field input,
+.contact-field textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 2px solid #dbeafe;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.15s, outline 0.15s;
+}
+
+.contact-field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  outline: 4px solid #bfdbfe;
+  border-color: #2563eb;
+}
+
+.contact-submit {
+  width: 100%;
+  min-height: 52px;
+  font-size: 1.05rem;
+}
+
+.contact-status {
+  min-height: 1.5rem;
+  margin: 0;
+  font-weight: 800;
+  text-align: center;
+}
+
+.contact-status-success { color: #15803d; }
+.contact-status-error { color: #dc2626; }
+
 /* ── Schedule type tabs ─────────────────────────────────────── */
 .schedule-type-tabs {
   display: flex;

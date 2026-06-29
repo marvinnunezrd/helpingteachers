@@ -129,4 +129,14 @@
     <loc>https://helpingteachers.io/es/terminos/</loc>
   </url>
 
+  <!-- CONTACT -->
+
+  <url>
+    <loc>https://helpingteachers.io/contact/</loc>
+  </url>
+
+  <url>
+    <loc>https://helpingteachers.io/es/contacto/</loc>
+  </url>
+
 </urlset>
