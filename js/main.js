@@ -435,9 +435,11 @@
       button.addEventListener("click", async () => {
         if (!authState.client || button.disabled) return;
         const provider = button.dataset.authProvider;
+        const oauthOptions = { redirectTo: getRedirectUrl(config) };
+        if (provider === "azure") oauthOptions.scopes = "openid profile email User.Read";
         const { error } = await authState.client.auth.signInWithOAuth({
           provider,
-          options: { redirectTo: getRedirectUrl(config) }
+          options: oauthOptions
         });
         if (error) showAuthMessage(modal, getAuthErrorMessage(error), "error");
       });
