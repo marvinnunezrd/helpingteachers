@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Guide | Helping Teachers</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../assets/favicon/favicon.ico">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .brand-hero {
+      padding: 56px 0 40px;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 48px;
+    }
+    .brand-hero h1 { margin: 0 0 0.5rem; }
+    .brand-hero p { color: var(--text-secondary); font-size: 1.1rem; margin: 0; }
+
+    .brand-section {
+      margin-bottom: 52px;
+    }
+    .brand-section h2 {
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .brand-section p, .brand-section li {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .brand-section ul {
+      padding-left: 1.4rem;
+      display: grid;
+      gap: 0.3rem;
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+    .color-chip {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+    .color-chip-swatch {
+      height: 72px;
+    }
+    .color-chip-info {
+      padding: 0.65rem 0.85rem;
+      background: #fff;
+    }
+    .color-chip-name {
+      font-weight: 900;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      display: block;
+    }
+    .color-chip-hex {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      font-family: monospace;
+    }
+
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: #f8fafc;
+      border-radius: 14px;
+      margin-bottom: 0.75rem;
+    }
+    .type-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      min-width: 80px;
+    }
+    .type-sample-fredoka {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .type-sample-nunito {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+    }
+
+    .tone-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .tone-tag {
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      background: #eff6ff;
+      border: 2px solid #bfdbfe;
+      color: #1d4ed8;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .prompt-box {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+    }
+    .avoid-list li { color: #dc2626; }
+    .avoid-list li::marker { color: #dc2626; }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="../index.html">
+        <img src="../assets/logo/helping-teachers-logo-horizontal.webp" alt="Helping Teachers logo" fetchpriority="high">
+      </a>
+      <div class="nav-actions">
+        <a class="nav-link" href="../index.html">← Back to site</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="brand-hero">
+        <h1>Brand Guide</h1>
+        <p>Helping Teachers — visual identity, colors, typography, and tone.</p>
+      </div>
+
+      <div class="brand-section">
+        <h2>Concept</h2>
+        <p>Helping Teachers is a simple educational tools dashboard for Pre-K, Kindergarten, and elementary teachers before middle school.</p>
+        <p style="margin-top:0.75rem">The brand should feel like a <strong>modern educational playground</strong>: friendly, organized, colorful, trustworthy, and easy to use.</p>
+        <p style="margin-top:0.75rem"><strong>Tagline:</strong> Simple Tools for Smarter Classrooms</p>
+      </div>
+
+      <div class="brand-section">
+        <h2>Color Palette</h2>
+        <div class="color-grid">
+          <div class="color-chip">
+            <div class="color-chip-swatch" style="background:#2563EB;"></div>
+            <div class="color-chip-info">
+              <span class="color-chip-name">Primary Blue</span>
+              <span class="color-chip-hex">#2563EB</span>
+            </div>
+          </div>
+          <div class="color-chip">
+            <div class="color-chip-swatch" style="background:#FBBF24;"></div>
+            <div class="color-chip-info">
+              <span class="color-chip-name">Playground Yellow</span>
+              <span class="color-chip-hex">#FBBF24</span>
+            </div>
+          </div>
+          <div class="color-chip">
+            <div class="color-chip-swatch" style="background:#22C55E;"></div>
+            <div class="color-chip-info">
+              <span class="color-chip-name">Learning Green</span>
+              <span class="color-chip-hex">#22C55E</span>
+            </div>
+          </div>
+          <div class="color-chip">
+            <div class="color-chip-swatch" style="background:#8B5CF6;"></div>
+            <div class="color-chip-info">
+              <span class="color-chip-name">Creative Purple</span>
+              <span class="color-chip-hex">#8B5CF6</span>
+            </div>
+          </div>
+          <div class="color-chip">
+            <div class="color-chip-swatch" style="background:#EF4444;"></div>
+            <div class="color-chip-info">
+              <span class="color-chip-name">Alert Red</span>
+              <span class="color-chip-hex">#EF4444</span>
+            </div>
+          </div>
+          <div class="color-chip">
+            <div class="color-chip-swatch" style="background:#F8FAFC; border-bottom:1px solid #e2e8f0;"></div>
+            <div class="color-chip-info">
+              <span class="color-chip-name">Background</span>
+              <span class="color-chip-hex">#F8FAFC</span>
+            </div>
+          </div>
+          <div class="color-chip">
+            <div class="color-chip-swatch" style="background:#1E293B;"></div>
+            <div class="color-chip-info">
+              <span class="color-chip-name">Text Primary</span>
+              <span class="color-chip-hex">#1E293B</span>
+            </div>
+          </div>
+          <div class="color-chip">
+            <div class="color-chip-swatch" style="background:#64748B;"></div>
+            <div class="color-chip-info">
+              <span class="color-chip-name">Text Secondary</span>
+              <span class="color-chip-hex">#64748B</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="brand-section">
+        <h2>Typography</h2>
+        <div class="type-row">
+          <span class="type-label">Headings</span>
+          <span class="type-sample-fredoka">Fredoka — Simple Tools</span>
+        </div>
+        <div class="type-row">
+          <span class="type-label">Body</span>
+          <span class="type-sample-nunito">Nunito — Friendly classroom tools for teachers.</span>
+        </div>
+      </div>
+
+      <div class="brand-section">
+        <h2>Tone</h2>
+        <div class="tone-tags">
+          <span class="tone-tag">Clear</span>
+          <span class="tone-tag">Friendly</span>
+          <span class="tone-tag">Professional</span>
+          <span class="tone-tag">Educational</span>
+          <span class="tone-tag">Fast</span>
+        </div>
+      </div>
+
+      <div class="brand-section">
+        <h2>Visual Style</h2>
+        <p>Modern Educational Playground. Inspiration:</p>
+        <ul style="margin-top:0.75rem">
+          <li>Educational blocks</li>
+          <li>Crayons and pencils</li>
+          <li>Chalkboards</li>
+          <li>Flashcards</li>
+          <li>School playground</li>
+          <li>Clean EdTech interfaces</li>
+        </ul>
+      </div>
+
+      <div class="brand-section">
+        <h2>AI Image Prompt</h2>
+        <p style="margin-bottom:0.75rem">Use this base prompt for any AI-generated icon or illustration:</p>
+        <div class="prompt-box">
+          Modern Educational Playground, clean educational dashboard, rounded vector style, bright classroom colors, friendly teacher tools, simple EdTech visual system, Pre-K through elementary school, white or transparent background.
+        </div>
+        <p style="margin-top:1.25rem;margin-bottom:0.75rem">Avoid:</p>
+        <ul class="avoid-list">
+          <li>Photorealistic style</li>
+          <li>Anime</li>
+          <li>Dark themes</li>
+          <li>Exaggerated gradients</li>
+          <li>Chaotic elements</li>
+          <li>Overly childish or toy-like appearance</li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span data-year></span> Helping Teachers. Internal brand reference.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+
+</html>
