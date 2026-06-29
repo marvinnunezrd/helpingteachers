@@ -69,8 +69,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let spinning = false;
   let recentPicks = [];
-  const CLASS_LIST_STORAGE_KEY = isSpanish ? "helpingTeachers.classList.es" : "helpingTeachers.classList.en";
-  const NAME_SPINNER_STORAGE_KEY = isSpanish ? "helpingTeachers.nameSpinner.es" : "helpingTeachers.nameSpinner.en";
+  const CLASS_LIST_STORAGE_KEY = "helpingTeachers.classList";
+  const NAME_SPINNER_STORAGE_KEY = "helpingTeachers.nameSpinner";
   let saveTimer = null;
   let cloudLoaded = false;
 
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.clearTimeout(saveTimer);
     saveTimer = window.setTimeout(() => {
       if (window.HelpingTeachersAuth && window.HelpingTeachersAuth.isSignedIn()) {
-        window.HelpingTeachersAuth.saveToolSetting("class-list", isSpanish ? "names-es" : "names-en", state);
+        window.HelpingTeachersAuth.saveToolSetting("class-list", "names", state);
       }
     }, 700);
   }
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
   async function loadCloudNameList() {
     if (!window.HelpingTeachersAuth || !window.HelpingTeachersAuth.isSignedIn() || cloudLoaded) return;
     cloudLoaded = true;
-    const { data, error } = await window.HelpingTeachersAuth.getToolSetting("class-list", isSpanish ? "names-es" : "names-en");
+    const { data, error } = await window.HelpingTeachersAuth.getToolSetting("class-list", "names");
     if (!error && data && applyNameList(data)) {
       localStorage.setItem(CLASS_LIST_STORAGE_KEY, JSON.stringify(data));
       localStorage.setItem(NAME_SPINNER_STORAGE_KEY, JSON.stringify(data));

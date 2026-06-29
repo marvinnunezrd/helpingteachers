@@ -92,12 +92,8 @@ document.addEventListener("DOMContentLoaded", function () {
     { name: isSpanish ? "Negro" : "Black", color: "#111827", soft: "#e5e7eb" }
   ];
 
-  const CLASS_LIST_STORAGE_KEY = isSpanish
-    ? "helpingTeachers.classList.es"
-    : "helpingTeachers.classList.en";
-  const TEAM_GENERATOR_STORAGE_KEY = isSpanish
-    ? "helpingTeachers.teamGenerator.es"
-    : "helpingTeachers.teamGenerator.en";
+  const CLASS_LIST_STORAGE_KEY = "helpingTeachers.classList";
+  const TEAM_GENERATOR_STORAGE_KEY = "helpingTeachers.teamGenerator";
 
   let saveTimer = null;
   let cloudLoaded = false;
@@ -277,8 +273,8 @@ document.addEventListener("DOMContentLoaded", function () {
     window.clearTimeout(saveTimer);
     saveTimer = window.setTimeout(function () {
       if (window.HelpingTeachersAuth && window.HelpingTeachersAuth.isSignedIn()) {
-        window.HelpingTeachersAuth.saveToolSetting("class-list", isSpanish ? "names-es" : "names-en", classListState);
-        window.HelpingTeachersAuth.saveToolSetting("team-generator", isSpanish ? "settings-es" : "settings-en", teamState);
+        window.HelpingTeachersAuth.saveToolSetting("class-list", "names", classListState);
+        window.HelpingTeachersAuth.saveToolSetting("team-generator", "settings", teamState);
       }
     }, 700);
   }
@@ -305,10 +301,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!window.HelpingTeachersAuth || !window.HelpingTeachersAuth.isSignedIn() || cloudLoaded) return;
     cloudLoaded = true;
 
-    const classListKey = isSpanish ? "names-es" : "names-en";
-    const teamSettingsKey = isSpanish ? "settings-es" : "settings-en";
-    let classListResult = await window.HelpingTeachersAuth.getToolSetting("class-list", classListKey);
-    const teamResult = await window.HelpingTeachersAuth.getToolSetting("team-generator", teamSettingsKey);
+    let classListResult = await window.HelpingTeachersAuth.getToolSetting("class-list", "names");
+    const teamResult = await window.HelpingTeachersAuth.getToolSetting("team-generator", "settings");
 
     if (!classListResult.error && (!classListResult.data || !Array.isArray(classListResult.data.names)) && teamResult.data && typeof teamResult.data.names === "string") {
       const migratedNames = teamResult.data.names.split("\n").map(name => name.trim()).filter(Boolean);
@@ -317,7 +311,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!classListResult.error && classListResult.data && applyClassList(classListResult.data)) {
       localStorage.setItem(CLASS_LIST_STORAGE_KEY, JSON.stringify(classListResult.data));
-      window.HelpingTeachersAuth.saveToolSetting("class-list", classListKey, classListResult.data);
+      window.HelpingTeachersAuth.saveToolSetting("class-list", "names", classListResult.data);
     }
 
     if (!teamResult.error && teamResult.data && applyTeamState(teamResult.data)) {
