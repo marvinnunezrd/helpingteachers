@@ -761,8 +761,9 @@
     }
 
     hydrateTeacherDisplayForm(modal, session);
+    const email = session && session.user ? session.user.email || "" : "";
     userBox.hidden = false;
-    userBox.textContent = `${text.signedIn}: ${getTeacherDisplayName(session)}`;
+    userBox.innerHTML = `<span>${text.signedIn}: <strong>${getTeacherDisplayName(session)}</strong></span>${email ? `<span class="auth-user-email">${email}</span>` : ""}`;
     signOutBtn.hidden = false;
     displayForm.hidden = false;
     if (authForms) authForms.hidden = true;

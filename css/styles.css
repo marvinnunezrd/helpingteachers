@@ -472,6 +472,13 @@ a { color: inherit; text-decoration: none; }
   color: #1d4ed8;
 }
 
+.auth-user-email {
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: #1e40af;
+  opacity: 0.8;
+}
+
 /* Message color states */
 .auth-message-success { color: #15803d; }
 .auth-message-error   { color: #dc2626; }
