@@ -40,9 +40,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let manualIndex = null;
   let autoTimer = null;
-  const VISUAL_SCHEDULE_STORAGE_KEY = document.documentElement.lang && document.documentElement.lang.toLowerCase().startsWith("es") ? "helpingTeachers.visualSchedule.es" : "helpingTeachers.visualSchedule.en";
+  const STORAGE_PREFIX = document.documentElement.lang && document.documentElement.lang.toLowerCase().startsWith("es") ? "helpingTeachers.visualSchedule.es" : "helpingTeachers.visualSchedule.en";
   let saveTimer = null;
-  let cloudLoaded = false;
+  const cloudLoaded = {};
+  let currentType = "regular";
+
+  const typeTabs = card.querySelectorAll("[data-schedule-type]");
+  const typeTipEl = document.getElementById("scheduleTypeTip");
+
+  function getStorageKey() { return STORAGE_PREFIX + "." + currentType; }
+  function getCloudKey() { return "activities-" + currentType; }
+
+  function getTypeTip(type) {
+    return card.dataset["typeTip" + type.charAt(0).toUpperCase() + type.replace(/-([a-z])/g, (_, c) => c.toUpperCase()).slice(1)] || "";
+  }
 
   function normalizeText(text) {
     return text
@@ -583,7 +594,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function saveLocalSchedule() {
-    localStorage.setItem(VISUAL_SCHEDULE_STORAGE_KEY, JSON.stringify({ activities: getActivities() }));
+    localStorage.setItem(getStorageKey(), JSON.stringify({ activities: getActivities() }));
   }
 
   function scheduleSave() {
@@ -591,7 +602,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.clearTimeout(saveTimer);
     saveTimer = window.setTimeout(() => {
       if (window.HelpingTeachersAuth && window.HelpingTeachersAuth.isSignedIn()) {
-        window.HelpingTeachersAuth.saveToolSetting("visual-schedule", "activities", { activities: getActivities() });
+        window.HelpingTeachersAuth.saveToolSetting("visual-schedule", getCloudKey(), { activities: getActivities() });
       }
     }, 700);
   }
@@ -608,17 +619,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function loadLocalSchedule() {
     try {
-      return JSON.parse(localStorage.getItem(VISUAL_SCHEDULE_STORAGE_KEY));
+      return JSON.parse(localStorage.getItem(getStorageKey()));
     } catch (error) {
       return null;
     }
   }
 
   async function loadCloudSchedule() {
-    if (!window.HelpingTeachersAuth || !window.HelpingTeachersAuth.isSignedIn() || cloudLoaded) return;
-    cloudLoaded = true;
-    const { data, error } = await window.HelpingTeachersAuth.getToolSetting("visual-schedule", "activities");
+    if (!window.HelpingTeachersAuth || !window.HelpingTeachersAuth.isSignedIn() || cloudLoaded[currentType]) return;
+    cloudLoaded[currentType] = true;
+    const { data, error } = await window.HelpingTeachersAuth.getToolSetting("visual-schedule", getCloudKey());
     if (!error && data && applyScheduleState(data)) saveLocalSchedule();
+  }
+
+  async function switchType(newType) {
+    if (newType === currentType) return;
+    saveLocalSchedule();
+    currentType = newType;
+
+    typeTabs.forEach(btn => {
+      const active = btn.dataset.scheduleType === newType;
+      btn.classList.toggle("active", active);
+      btn.setAttribute("aria-selected", active ? "true" : "false");
+    });
+
+    if (typeTipEl) {
+      const key = "typeTip" + newType.charAt(0).toUpperCase() + newType.replace(/-([a-z])/g, (_, c) => c.toUpperCase()).slice(1);
+      typeTipEl.textContent = card.dataset[key] || "";
+    }
+
+    manualIndex = null;
+    const local = loadLocalSchedule();
+    if (!applyScheduleState(local)) {
+      rowsContainer.innerHTML = "";
+      ensureEmptyRow();
+      renderSchedule();
+    }
+
+    if (window.HelpingTeachersAuth && window.HelpingTeachersAuth.isSignedIn()) {
+      await loadCloudSchedule();
+    }
   }
   function removeRow(row) {
     const rows = rowsContainer.querySelectorAll(".schedule-row");
@@ -703,6 +743,10 @@ document.addEventListener("DOMContentLoaded", () => {
   previousBtn.addEventListener("click", goToPreviousActivity);
   nextBtn.addEventListener("click", goToNextActivity);
   resetBtn.addEventListener("click", resetSchedule);
+
+  typeTabs.forEach(btn => {
+    btn.addEventListener("click", () => switchType(btn.dataset.scheduleType));
+  });
 
   autoTimer = setInterval(() => {
     if (manualIndex === null) {

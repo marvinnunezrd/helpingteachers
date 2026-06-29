@@ -60,7 +60,17 @@
     <section class="timer-section container">
       <div class="timer-card visual-schedule-card" data-empty-message="Please add at least one activity."
         data-current-label="Current Activity" data-completed-label="Completed" data-upcoming-label="Upcoming"
-        data-no-time-label="No time" data-activity-placeholder="Activity" data-time-placeholder="Start time">
+        data-no-time-label="No time" data-activity-placeholder="Activity" data-time-placeholder="Start time"
+        data-type-regular="Regular Day" data-type-one-session="One Session" data-type-delay="Delay Opening"
+        data-type-tip-regular="Your full regular school day schedule."
+        data-type-tip-one-session="Shortened day — parent conferences, last day, etc."
+        data-type-tip-delay="Late start due to snow, heat, or other emergency.">
+        <div class="schedule-type-tabs" role="tablist" aria-label="Schedule type">
+          <button type="button" class="schedule-type-btn active" data-schedule-type="regular" role="tab" aria-selected="true">📅 Regular Day</button>
+          <button type="button" class="schedule-type-btn" data-schedule-type="one-session" role="tab" aria-selected="false">🕐 One Session</button>
+          <button type="button" class="schedule-type-btn" data-schedule-type="delay" role="tab" aria-selected="false">❄️ Delay Opening</button>
+        </div>
+        <p class="schedule-type-tip" id="scheduleTypeTip">Your full regular school day schedule.</p>
         <div class="visual-schedule-layout">
           <div class="schedule-input-panel">
             <div class="schedule-input-header">

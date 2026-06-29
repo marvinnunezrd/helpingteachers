@@ -61,7 +61,17 @@
       <div class="timer-card visual-schedule-card" data-empty-message="Agrega al menos una actividad."
         data-current-label="Actividad Actual" data-completed-label="Completada" data-upcoming-label="Próxima"
         data-no-time-label="Sin hora" data-activity-placeholder="Actividad" data-time-placeholder="Hora de inicio"
-        data-current-time-label="Ahora">
+        data-current-time-label="Ahora"
+        data-type-regular="Día Regular" data-type-one-session="Una Sesión" data-type-delay="Apertura Tardía"
+        data-type-tip-regular="Tu horario completo del día escolar regular."
+        data-type-tip-one-session="Día corto — conferencias de padres, último día, etc."
+        data-type-tip-delay="Entrada tarde por nieve, calor u otra emergencia.">
+        <div class="schedule-type-tabs" role="tablist" aria-label="Tipo de horario">
+          <button type="button" class="schedule-type-btn active" data-schedule-type="regular" role="tab" aria-selected="true">📅 Día Regular</button>
+          <button type="button" class="schedule-type-btn" data-schedule-type="one-session" role="tab" aria-selected="false">🕐 Una Sesión</button>
+          <button type="button" class="schedule-type-btn" data-schedule-type="delay" role="tab" aria-selected="false">❄️ Apertura Tardía</button>
+        </div>
+        <p class="schedule-type-tip" id="scheduleTypeTip">Tu horario completo del día escolar regular.</p>
         <div class="visual-schedule-layout">
           <div class="schedule-input-panel">
 
